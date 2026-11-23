@@ -52,7 +52,7 @@
   // Service popups on the home page
   document.addEventListener('click', function (e) {
     var b = e.target.closest('[data-svc]');
-    if (b) { var m = document.getElementById('svc-' + b.getAttribute('data-svc')); if (m) { m.classList.add('open'); m.setAttribute('aria-hidden', 'false'); } return; }
+    if (b) { var m = document.getElementById('svc-' + b.getAttribute('data-svc')); if (m) { e.preventDefault(); m.classList.add('open'); m.setAttribute('aria-hidden', 'false'); } return; }
     var pop = e.target.closest('.svc-pop');
     if (pop && (e.target === pop || e.target.closest('[data-close]'))) { pop.classList.remove('open'); pop.setAttribute('aria-hidden', 'true'); }
   });
@@ -74,6 +74,19 @@
     }, { threshold: 0.45 });
     vo.observe(v);
   });
+
+  // Season picker: the button follows the chosen season — its own payment link, or the repeat application
+  var buy = document.getElementById('svc-buy');
+  if (buy) {
+    var go = buy.querySelector('.buy-go');
+    var sync = function () {
+      var r = buy.querySelector('input[name="buy"]:checked'); if (!r) return;
+      if (r.dataset.pay) { go.href = r.dataset.pay; go.target = '_blank'; go.textContent = 'Перейти до оплати'; go.removeAttribute('data-apply'); }
+      else { go.href = '#zayavka'; go.removeAttribute('target'); go.textContent = 'Залишити заявку на повтор'; go.setAttribute('data-apply', r.dataset.repeat); }
+    };
+    buy.addEventListener('change', sync); sync();
+    go.addEventListener('click', function () { if (go.hasAttribute('data-apply')) { buy.classList.remove('open'); buy.setAttribute('aria-hidden', 'true'); } });
+  }
 
   // Close the mobile menu after a tap on a link.
   document.querySelectorAll('.hdr nav a').forEach(function (a) {

@@ -92,7 +92,7 @@ def build():
         G(301, 190, 838, 318, [T(60, 58, 400, "Єдиний тариф:", "F", 48, 53, OLIVE, "left", cls="h2")] + fch + [
             T(500, 58, 266, "Ціна за сезон<br>200$", "F", 48, 48, OLIVE, "center", cls="h2"),
             T(500, 165, 266, "Можливе розтермінування", "F", 20, 22, "rgba(89,95,69,.5)", "center", cls="p"),
-            BTN(502, 218, 272, 45, "ВЗЯТИ УЧАСТЬ", "#temy", "fill", OLIVE, "#fff", 15),
+            BTN(502, 218, 272, 45, "ВЗЯТИ УЧАСТЬ", "#temy", "fill", OLIVE, "#fff", 15, attrs='data-svc="buy"'),
         ], bg=CREAM),
         T(320, 560, 800, "КІЛЬКІСТЬ МІСЦЬ <i>ОБМЕЖЕНА</i>", "F", 48, 53, C, "center", cls="h2"),
         T(420, 619, 600, "для збереження камерної атмосфери", "F", 20, 22, C, "center", cls="p"),
@@ -117,7 +117,7 @@ def build():
         T(150, 157, 519, "не заздалегідь прописаний сценарій,<br>а ваш власний творчий проект.", "F", 28, 33.6, C, "right", cls="p"),
         I(126, 202, 485, 327, "1/69cfa3e0eecd0ca27089f36d_optimized.webp"),
         T(120, 503, 520, "Запрошую вас у простір<br>жіночої підтримки та натхнення,<br>щоб створити свій авторський шедевр!", "F", 28, 33.6, C, "left", cls="p"),
-        BTN(120, 653, 232, 45, "ВЗЯТИ УЧАСТЬ", "#temy", "fill", C, "#000", 15),
+        BTN(120, 653, 232, 45, "ВЗЯТИ УЧАСТЬ", "#temy", "fill", C, "#000", 15, attrs='data-svc="buy"'),
     ], bgimg="1/69cfa37123efa9cc4461697a_optimized_1920.webp"))
     # B14 testimonials
     keys = "bdacef"
@@ -139,6 +139,7 @@ def build():
     # Small Forum body text -> Cormorant 500 like the home page (not in the season cards or the author card, which are sized for Forum)
     swap = lambda h: re.sub(r"font-family:var\(--forum\);font-size:20px;line-height:2[02]px;(color:[^;]*;text-align:[^;]*;)font-weight:400;",
                             r"font-family:var(--corm);font-size:22px;line-height:25px;\1font-weight:500;", h)
+    secs.append(buy_popup())
     body = "".join(x if ('id="temy"' in x or "Наталя Кочергіна" in x) else swap(x) for x in secs)
     # Warm white instead of the yellow cream
     body = body.replace("#fffaf1", "#fdfbf7")
@@ -195,3 +196,21 @@ def seasons_block():
     ch.append(I(545, 1478, 350, 38, "1/69cf9218eecd0ca27089a59b_optimized_1045_flip.webp"))
     ch.append(T(302, 1550, 836, "Кожен сезон — окрема сторінка з програмою, форматом і відгуками. Натисніть «Детальніше».", "F", 20, 22, OLIVE, "center", cls="p", extra="opacity:.7"))
     return ch
+
+
+def buy_popup():
+    """'Взяти участь': pick a season, then pay with that season's own WayForPay link (or apply for a repeat)."""
+    rows = ""
+    for k, s in enumerate(SEASONS):
+        t = s["title"].rstrip(":")
+        if s["kind"] == "pay":
+            act = f'data-pay="{s["pay"]}"'; note = s["status"]
+        else:
+            act = f'data-repeat="{s["n"]}"'; note = "Залиште заявку на повтор"
+        rows += (f'<label class="buy-opt"><input type="radio" name="buy" {act}{" checked" if k == 2 else ""}>'
+                 f'<span class="buy-k">Сезон {s["n"]}</span><span class="buy-t">{t}</span><span class="buy-s">{note}</span></label>')
+    return f'''<div class="modal svc-pop buy-pop" id="svc-buy" aria-hidden="true" role="dialog" aria-labelledby="buy-h"><div class="svc-box buy-box">
+<button class="mx" aria-label="Закрити" data-close>×</button>
+<h2 id="buy-h">Оберіть сезон</h2><p class="buy-p">200$ за сезон · можливе розтермінування</p>
+<div class="buy-list">{rows}</div>
+<a class="hm-btn buy-go" href="#" target="_blank" rel="noopener">Перейти до оплати</a></div></div>'''
