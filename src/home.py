@@ -28,9 +28,9 @@ SEASON_CARDS = [
     # n, title, status line, image, page
     (1, "Стосунки з собою", "Повтор сезону завершено", "1/69cf907e02d98a0e80c32e0c_optimized.webp", "season-1.html"),
     (2, "Стосунки у парі", "Іде зараз · з 19 жовтня", "1/69cf91c623efa9cc44611d23_optimized.webp", "season-2.html"),
-    (3, "Гроші та реалізація", "Старт у грудні 2026", "1/69cf92ec378263656007dff2_optimized.webp", "season-3.html"),
-    (4, "Тіло та здоров'я", "Старт у березні 2027", "1/69cf927ceecd0ca27089a758_optimized.webp", "season-4.html"),
-    (5, "Імідж та краса", "Старт у червні 2027", "1/69cf93237ed93e76919e3406_optimized.webp", "season-5.html"),
+    (3, "Гроші та реалізація", "Старт у березні 2027", "1/69cf92ec378263656007dff2_optimized.webp", "season-3.html"),
+    (4, "Тіло та здоров'я", "Старт у червні 2027", "1/69cf927ceecd0ca27089a758_optimized.webp", "season-4.html"),
+    (5, "Імідж та краса", "Старт у вересні 2027", "1/69cf93237ed93e76919e3406_optimized.webp", "season-5.html"),
 ]
 
 def build():
@@ -42,8 +42,6 @@ def build():
         T(482, 182, 481, "ВІТАЮ ВАС", "C", 90, 90, "#000", "right", cls="big", tag="h1", extra="margin:0;"),
         T(517, 246, 446, "У СВОЄМУ", "C", 90, 90, "#000", "right", cls="big"),
         T(515, 310, 448, "ПРОСТОРІ", "C", 90, 90, "#000", "right", cls="big"),
-        T(463, 422, 500, "психотерапевт · психодинамічний коуч", "F", 20, 24, "#757575", "right", cls="p"),
-        BTN(750, 470, 213, 50, "Подати заявку", TG_N, "fill", "#000", "#fff", 19, "C", 25, 'target="_blank" rel="noopener"', arrow=True),
     ], bg="#fff"))
     # About (lifted 80px: the original had a dead gap under the hero)
     secs.append(SEC(640, [

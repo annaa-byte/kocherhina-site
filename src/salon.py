@@ -155,15 +155,15 @@ SEASONS = [
          img="1/69cf91c623efa9cc44611d23_optimized.webp", ir=(918, 445, 192, 206), page="season-2.html"),
     dict(n=3, y=685, h=231, title="Гроші та реалізація:", small="",
          desc="Жіночі стратегії успіху без вигорання.<br>Стосунки з грошима. Грошові архетипи.",
-         status="Старт запланований на грудень 2026 року", kind="pay", pay="https://secure.wayforpay.com/button/bc93fb11f23a3",
+         status="Старт запланований на березень 2027 року", kind="pay", pay="https://secure.wayforpay.com/button/bc93fb11f23a3",
          img="1/69cf92ec378263656007dff2_optimized.webp", ir=(918, 712, 192, 176), page="season-3.html"),
     dict(n=4, y=936, h=230, title="Тіло та здоров'я:", small="",
          desc="Розслаблення в період турбулентності, сексуальність та індивідуальна система турботи. Психосоматика. Стосунки з їжею.",
-         status="Старт запланований на березень 2027 року", kind="pay", pay="https://secure.wayforpay.com/button/be8b6db315e1a",
+         status="Старт запланований на червень 2027 року", kind="pay", pay="https://secure.wayforpay.com/button/be8b6db315e1a",
          img="1/69cf927ceecd0ca27089a758_optimized.webp", ir=(947, 958, 175, 184), page="season-4.html"),
     dict(n=5, y=1186, h=230, title="Імідж та краса:", small="",
          desc="Як внутрішній стан змінює сприйняття нас іншими людьми.<br>Імідж, як інструмент досягнення цілей в соціумі.",
-         status="Старт запланований на червень 2027 року", kind="pay", pay="https://secure.wayforpay.com/button/b45d80f803d42",
+         status="Старт запланований на вересень 2027 року", kind="pay", pay="https://secure.wayforpay.com/button/b45d80f803d42",
          img="1/69cf93237ed93e76919e3406_optimized.webp", ir=(962, 1194, 150, 205), page="season-5.html"),
 ]
 
