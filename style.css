@@ -1,0 +1,193 @@
+:root{
+  --forum:'Forum',cursive;
+  --corm:'Cormorant',serif;
+  --olive:#595f45;
+  --cream:#fffaf1;
+  --k:1;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:#fff;color:#000;font-family:var(--corm);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{display:block}
+
+/* ---------- header (same look as the original) ---------- */
+.hdr{position:sticky;top:0;z-index:50;background:#f5f5f5;height:76px}
+.hin{max-width:1440px;margin:0 auto;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 135px}
+.hdr .logo{font-family:var(--forum);font-size:32px;line-height:46px;text-decoration:none;color:#000;white-space:nowrap}
+.hdr nav{display:flex;gap:15px}
+.hdr nav a{font-family:var(--forum);font-size:17px;text-decoration:none;color:#000;white-space:nowrap}
+.hdr nav a:hover,.hdr nav a.on{text-decoration:underline;text-underline-offset:4px}
+.burger{display:none;background:none;border:0;width:36px;height:36px;padding:8px 4px;cursor:pointer}
+.burger span{display:block;height:1px;background:#000;margin:7px 0}
+
+/* ---------- absolute stage ---------- */
+.sec{position:relative;overflow:hidden;height:calc(var(--h) * var(--k))}
+.stage{position:relative;width:1440px;height:var(--h);margin:0 auto;zoom:var(--k)}
+@supports not (zoom:1){.stage{transform:scale(var(--k));transform-origin:top center}}
+.a{position:absolute}
+.t{margin:0;white-space:normal}
+.deco{pointer-events:none}
+img.a{object-fit:cover}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;cursor:pointer;transition:opacity .2s, background .2s}
+.btn:hover{opacity:.85}
+.btn .arr{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:#fff5e7;font-size:20px;margin-right:-14px}
+.grp{}
+.grp > .a{}
+.star{clip-path:polygon(50% 0,55% 40%,100% 50%,55% 60%,50% 100%,45% 60%,0 50%,45% 40%)}
+
+/* ---------- modal form ---------- */
+.modal{position:fixed;inset:0;z-index:100;background:rgba(40,43,30,.55);display:none;align-items:center;justify-content:center;padding:16px}
+.modal.open{display:flex}
+.mbox{position:relative;background:var(--cream);color:var(--olive);width:min(560px,100%);max-height:92vh;overflow:auto;padding:44px 48px 40px;border:1px solid var(--olive)}
+.mbox h2{font-family:var(--forum);font-weight:400;font-size:40px;line-height:1.1;margin:0 0 12px;text-align:center}
+.mbox h2 i{font-style:italic}
+.msub{font-family:var(--forum);font-size:19px;line-height:1.35;text-align:center;margin:0 0 24px}
+.mx{position:absolute;right:14px;top:8px;background:none;border:0;font-size:34px;color:var(--olive);cursor:pointer;line-height:1}
+#apply-form label{display:block;font-family:var(--forum);font-size:17px;margin-bottom:14px}
+#apply-form input:not([type=checkbox]),#apply-form select,#apply-form textarea{display:block;width:100%;margin-top:6px;font:inherit;font-family:var(--corm);font-size:19px;color:#000;background:#fff;border:1px solid var(--olive);border-radius:0;padding:10px 12px}
+#apply-form .chk{display:flex;gap:10px;align-items:flex-start;font-size:16px}
+#apply-form .chk input{margin-top:3px;accent-color:var(--olive)}
+.ferr{color:#8a2a1c;font-family:var(--forum);font-size:16px}
+.pill{display:block;margin:8px auto 0;background:var(--olive);color:#fff;border:1px solid var(--olive);border-radius:20px;font-family:var(--forum);font-size:15px;padding:15px 36px;cursor:pointer}
+.pill:hover{opacity:.85}
+
+/* ---------- footer (new: offer / privacy / contacts) ---------- */
+.ftr{background:#f5f5f5;color:#000}
+.fin{max-width:1440px;margin:0 auto;padding:48px 135px 24px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+.ftr .logo{font-family:var(--forum);font-size:28px;text-decoration:none}
+.ftr p{font-family:var(--corm);font-size:18px;line-height:1.3;margin:10px 0 0;color:#555;max-width:340px}
+.fcol{display:flex;flex-direction:column;gap:10px}
+.fcol a{font-family:var(--forum);font-size:17px;text-decoration:none}
+.fcol a:hover{text-decoration:underline}
+.fbot{max-width:1440px;margin:0 auto;padding:16px 135px 28px;font-family:var(--forum);font-size:14px;color:#777;border-top:1px solid #ddd}
+
+/* ---------- flow pages (season pages, legal) ---------- */
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.f-forum{font-family:var(--forum)}
+
+/* ---------- tablet header ---------- */
+@media (max-width:1100px){
+  .hin{padding:0 24px}
+  .hdr .logo{font-size:26px}
+  .burger{display:block}
+  .hdr nav{position:fixed;top:76px;left:0;right:0;background:#f5f5f5;flex-direction:column;gap:0;padding:8px 24px 20px;display:none;border-top:1px solid #e3e3e3}
+  .hdr nav a{padding:12px 0;font-size:20px;border-bottom:1px solid #e3e3e3}
+  body.menu-open .hdr nav{display:flex}
+  .fin{padding:40px 24px 20px;grid-template-columns:1fr}
+  .fbot{padding:16px 24px 24px}
+}
+
+/* ---------- phones: stacked flow instead of the absolute stage ---------- */
+@media (max-width:759px){
+  .sec{height:auto;padding:40px 20px}
+  .stage{width:auto;height:auto;zoom:1;transform:none;display:flex;flex-direction:column;gap:16px}
+  .stage .a{position:static;width:auto!important;height:auto!important;max-width:100%}
+  .stage .deco,.stage .shape,.stage .line.deco{display:none}
+  .stage .t{font-size:min(var(--m,1em),1em)}
+  .stage img.a.keep{width:100%!important;height:auto!important;aspect-ratio:auto}
+  .stage .t.big{font-size:52px!important;line-height:1!important}
+  .stage .t.h2{font-size:34px!important;line-height:1.1!important}
+  .stage .t.p{font-size:20px!important;line-height:1.35!important}
+  .stage .btn{align-self:center;padding:14px 28px;min-height:47px}
+  .stage .grp{padding:24px 20px;display:flex;flex-direction:column;gap:12px}
+  .stage .grp .btn{align-self:flex-start}
+  .stage .row{display:flex!important;flex-wrap:wrap;gap:10px}
+  .mob-hide{display:none!important}
+  .sec.hasmbg{background:var(--mbg)!important}
+  .stage .svc{background:#595f45;padding:0 0 22px!important}
+  .stage .svc .t{padding:0 20px}
+  .hdr .logo{font-size:22px}
+  .mbox{padding:40px 22px 28px}
+  .mbox h2{font-size:32px}
+}
+
+/* ================= season pages (flow layout in the site's components) ================= */
+.sp{padding:90px 0}
+.sp.cream{background:var(--cream);color:var(--olive)}
+.sp.olive{background:var(--olive);color:#fffaf1}
+.sp-crumbs{font-family:var(--forum);font-size:16px;color:var(--olive);padding:18px max(24px,calc((100% - 1200px)/2));background:var(--cream);max-width:none}
+.sp-crumbs a{color:var(--olive)}
+.sp-crumbs + .sp{padding-top:40px}
+.sp-h{font-family:var(--forum);font-weight:400;font-size:48px;line-height:48px;text-align:center;margin:0 0 48px;color:var(--olive)}
+.sp-h.light{color:#fffaf1}
+.sp-h.dark{color:#000;text-align:left;max-width:1000px;margin-left:auto;margin-right:auto}
+.sp-intro{display:grid;grid-template-columns:1.25fr 1fr;gap:80px;align-items:start}
+.sp-col p{font-family:var(--forum);font-size:24px;line-height:31px;margin:0 0 22px}
+.sp-quote{margin:0;background:#fff;padding:40px 36px 36px;text-align:center;color:#000}
+.sp-quote img{margin:0 auto 18px}
+.sp-quote blockquote{margin:0 0 18px;font-family:var(--forum);font-size:28px;line-height:33.6px;color:var(--olive)}
+.sp-quote p{font-family:var(--corm);font-size:21px;line-height:25px;margin:0}
+.sp-band{background:#fff5e7;color:var(--olive);margin:0 auto;max-width:1200px;padding:56px 90px}
+.sp-band p{font-family:var(--forum);font-size:28px;line-height:33.6px;text-align:center;margin:0}
+.sp-want{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:56px 24px}
+.sp-want li{background:#fff;position:relative;padding:44px 24px 26px;text-align:center;font-family:var(--corm);font-size:21px;line-height:24px;color:#000;min-height:108px;display:flex;align-items:center;justify-content:center}
+.sp-want li img{position:absolute;top:-30px;left:50%;transform:translateX(-50%)}
+.sp-two{display:grid;grid-template-columns:420px 1fr;gap:80px;align-items:start}
+.sp-ell{position:relative;width:420px;height:90px;display:flex;align-items:center;justify-content:center}
+.sp-ell img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}
+.sp-ell h2{position:relative;font-family:var(--forum);font-weight:400;font-size:34px;line-height:44px;margin:0;color:#fffaf1;text-align:center}
+.sp-rows{list-style:none;margin:0;padding:0}
+.sp-rows li{font-family:var(--forum);font-size:22px;line-height:28px;padding:14px 0 14px 34px;border-bottom:1px solid #fffaf1;position:relative}
+.sp-rows li .sp-star{position:absolute;left:0;top:18px}
+.sp-rows.small li{padding-left:0;font-size:20px}
+.sp-star{display:inline-block;width:18px;height:18px;background:#fffaf1;margin-right:12px;vertical-align:-2px}
+.sp-fmt{font-family:var(--forum);font-size:22px;line-height:28px;margin:0 0 22px}
+.sp-guests{margin-top:34px}
+.sp-guests h3{font-family:var(--forum);font-weight:400;font-size:28px;margin:0 0 10px}
+.sp-guests p{font-family:var(--forum);font-size:20px;margin:6px 0}
+.sp-jag{display:block;width:350px;height:38px;margin:0 auto;object-fit:cover}
+.sp-weeks{display:flex;flex-direction:column;gap:21px;max-width:836px;margin:0 auto}
+.sp-week{background:var(--olive);color:#fffaf1;padding:30px 60px 34px}
+.sp-week span{font-family:var(--forum);font-size:18px;opacity:.6}
+.sp-week h3{font-family:var(--forum);font-weight:700;font-size:28px;line-height:33.6px;margin:6px 0 10px}
+.sp-week p{font-family:var(--forum);font-size:20px;line-height:24px;margin:0}
+.sp-lead{font-family:var(--forum);font-size:28px;line-height:33.6px;text-align:center;max-width:836px;margin:0 auto 18px}
+.sp-lead.soft{font-size:22px;opacity:.75}
+.sp-price{background:var(--cream);color:var(--olive);max-width:838px;margin:0 auto;padding:58px 60px;display:grid;grid-template-columns:1fr 280px;gap:40px}
+.sp-price h3{font-family:var(--forum);font-weight:400;font-size:48px;line-height:53px;margin:0 0 18px}
+.sp-price ul{list-style:none;margin:0;padding:0}
+.sp-price li{font-family:var(--forum);font-size:20px;line-height:22px;margin:0 0 15px}
+.sp-price .sp-star{background:var(--olive)}
+.sp-pr{text-align:center}
+.sp-pr h3{font-size:44px;line-height:48px}
+.sp-pr p{font-family:var(--forum);font-size:20px;opacity:.5;margin:0 0 22px}
+.sp-btn{display:block;font-family:var(--forum);font-size:15px;text-decoration:none;border-radius:20px;padding:15px 18px;margin:0 0 10px;text-align:center;border:1px solid var(--olive)}
+.sp-btn.fill{background:var(--olive);color:#fff}
+.sp-btn.line{color:var(--olive)}
+.sp-btn:hover{opacity:.85}
+.sp-lim{font-family:var(--forum);font-size:48px;line-height:53px;text-align:center;margin:56px 0 0;color:#fffaf1}
+.sp-lim small{display:block;font-size:20px;line-height:22px;margin-top:6px}
+.sp-close{background-size:cover;background-position:50% 50%;padding:150px 0}
+.sp-close-in{max-width:560px}
+.sp-close p{font-family:var(--forum);font-size:28px;line-height:33.6px;color:#fffaf1;margin:0 0 22px}
+.sp-ts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:0 auto;align-items:start}
+.sp-t{margin:0;background:#fff;padding:28px 22px 26px;text-align:center;border-bottom:0}
+.sp-t img{margin:0 auto 10px}
+.sp-t blockquote{margin:0;font-family:var(--corm);font-weight:600;font-size:20px;line-height:22px;color:#000;padding-bottom:18px;border-bottom:1px solid #000}
+.sp-next{display:flex;justify-content:space-between;gap:16px;padding:28px max(24px,calc((100% - 1200px)/2));font-family:var(--forum);font-size:18px;background:var(--cream);max-width:none}
+.sp-next a{color:var(--olive)}
+.legal{background:var(--cream);color:#000;padding:80px 0}
+.legal .wrap{max-width:820px}
+.legal h1{font-family:var(--forum);font-weight:400;font-size:48px;line-height:1.1;color:var(--olive);margin:0 0 30px}
+.legal h2{font-family:var(--forum);font-weight:400;font-size:28px;color:var(--olive);margin:34px 0 10px}
+.legal p,.legal li{font-family:var(--corm);font-size:21px;line-height:1.4}
+.legal .todo{background:#fff5e7;border-left:3px solid var(--olive);padding:14px 18px}
+@media (max-width:900px){
+  .sp{padding:60px 0}
+  .sp-h{font-size:34px;line-height:1.1;margin-bottom:34px}
+  .sp-intro,.sp-two,.sp-price{grid-template-columns:1fr;gap:34px}
+  .sp-want{grid-template-columns:1fr;gap:50px}
+  .sp-band{padding:36px 24px;margin:0 20px}
+  .sp-band p,.sp-lead,.sp-close p{font-size:22px;line-height:1.35}
+  .sp-week{padding:24px 22px}
+  .sp-week h3{font-size:23px;line-height:1.25}
+  .sp-price{padding:34px 22px}
+  .sp-price h3{font-size:36px;line-height:1.1}
+  .sp-lim{font-size:32px;line-height:1.15}
+  .sp-ts{grid-template-columns:1fr}
+  .sp-ell{width:300px;height:70px}
+  .sp-ell h2{font-size:32px}
+  .sp-close{padding:90px 0}
+  .sp-jag{width:260px;height:28px}
+}
