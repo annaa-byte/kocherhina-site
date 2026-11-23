@@ -37,7 +37,7 @@ def build_one(n):
                 BTN(522, 441, 170, 45, "ПРИЄДНАТИСЯ", card["pay"], "fill", OLIVE, "#fff", 15, attrs='target="_blank" rel="noopener"'))
     bx = 322 if card["kind"] == "repeat" else 357
     buttons = [BTN(bx, 441, 135, 47, "ПРОГРАМА" if s.get("program") else "ВАРТІСТЬ", prog_btn, "line", OLIVE, OLIVE, 16.5), main_btn]
-    out = [SEC(600, hero(title=title, buttons=buttons, sub=SUBS[n], byline=status, photo=card["img"], photo_fit="contain", photo_box=(790, 12, 450, 548)), bg=OLIVE, mbg=CREAM, cls="m-shero")]
+    out = [SEC(600, hero(title=title, buttons=buttons, sub=SUBS[n], byline=status, photo=card["img"], photo_fit="contain", photo_box=(765, 0, 500, 575)), bg=OLIVE, mbg=CREAM, cls="m-shero")]
     out.append(f'<nav class="sp-crumbs wrap"><a href="svoboda-buty-zhinkoyu.html">Свобода бути жінкою</a> / <span>Сезон {n}</span></nav>')
 
     out += editorial(s, card, n)
