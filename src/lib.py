@@ -78,12 +78,19 @@ def header(active=""):
 <nav>{items}</nav></div></header>'''
 
 def footer():
-    return '''<footer class="ftr"><div class="fin">
-<div class="fcol"><a class="logo" href="index.html">НАТАЛЯ КОЧЕРГІНА</a>
-<p>Психоаналітичний психотерапевт, груповий терапевт, психодинамічний коуч</p></div>
-<div class="fcol"><a href="about.html">Про мене</a><a href="svoboda-buty-zhinkoyu.html">Свобода бути жінкою</a><a href="index.html#poslugy">Послуги</a><a href="index.html#vidguky">Відгуки</a></div>
-<div class="fcol"><a href="https://t.me/Kocher_Nataly" target="_blank" rel="noopener">Telegram: @Kocher_Nataly</a><a href="oferta.html">Публічна оферта</a><a href="privacy.html">Політика конфіденційності</a></div>
-</div><div class="fbot">© 2026 Наталя Кочергіна</div></footer>'''
+    """The last page of the book: an author's signature, the salon ornament, everything one tap away."""
+    orn = img("1/69cf74dc7ed93e76919db552_optimized.webp")
+    ornf = img("1/69cf74dc7ed93e76919db552_optimized_670_flop.webp")
+    return f'''<footer class="ftr"><img class="f-orn l" src="{orn}" alt="" loading="lazy"><img class="f-orn r" src="{ornf}" alt="" loading="lazy">
+<div class="f-top"><span class="f-mark">НК</span>
+<p class="f-sign">Наталя Кочергіна</p>
+<p class="f-role">Психоаналітичний психотерапевт · груповий терапевт · психодинамічний коуч</p>
+<a class="f-cta" href="https://t.me/Kocher_Nataly" target="_blank" rel="noopener">Написати в Telegram</a></div>
+<div class="fin">
+<div class="fcol"><h3>Сторінки</h3><a href="about.html">Про мене</a><a href="index.html#poslugy">Послуги</a><a href="index.html#vidguky">Відгуки</a></div>
+<div class="fcol"><h3>Свобода бути жінкою</h3><a href="svoboda-buty-zhinkoyu.html">Про проєкт</a><a href="season-1.html">Сезон 1 · Стосунки з собою</a><a href="season-2.html">Сезон 2 · Power Couple</a></div>
+<div class="fcol"><h3>Звʼязок</h3><a href="https://t.me/Kocher_Nataly" target="_blank" rel="noopener">Telegram: @Kocher_Nataly</a><a href="oferta.html">Публічна оферта</a><a href="privacy.html">Політика конфіденційності</a></div>
+</div><div class="fbot"><span>© 2026 Наталя Кочергіна</span><a href="#top" onclick="scrollTo({{top:0,behavior:'smooth'}});return false">Нагору ↑</a></div></footer>'''
 
 SEASON_OPTS = [("1", "Сезон 1. Стосунки з собою"), ("2", "Сезон 2. Стосунки у парі (Power Couple)"),
                ("3", "Сезон 3. Гроші та реалізація"), ("4", "Сезон 4. Тіло та здоров'я"),
