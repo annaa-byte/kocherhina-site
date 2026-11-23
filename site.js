@@ -11,26 +11,7 @@
   // ---- motion: reveal on scroll, hero lines, header shadow ----
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var hdr = document.querySelector('.hdr');
-  // The header takes the colour of the block right under it, so it never sits as a grey strip on top of the page
-  function tint() {
-    if (!hdr) return;
-    hdr.classList.toggle('scrolled', scrollY > 10);
-    if (document.body.classList.contains('menu-open')) return;
-    var y = hdr.offsetHeight + 2, el = document.elementFromPoint(innerWidth / 2, y), bg = '';
-    while (el && el !== document.documentElement) {
-      var c = getComputedStyle(el).backgroundColor;
-      if (c && c !== 'transparent' && !/rgba\(.*,\s*0\)$/.test(c)) { bg = c; break; }
-      if (el.tagName === 'SECTION' && getComputedStyle(el).backgroundImage !== 'none') break;
-      el = el.parentElement;
-    }
-    var m = (bg || 'rgb(255,250,241)').match(/[\d.]+/g).map(Number);
-    hdr.style.setProperty('--hbg', 'rgba(' + m[0] + ',' + m[1] + ',' + m[2] + ',.95)');
-    hdr.classList.toggle('dark', (0.299 * m[0] + 0.587 * m[1] + 0.114 * m[2]) < 140);
-  }
-  addEventListener('scroll', tint, { passive: true });
-  addEventListener('resize', tint);
-  addEventListener('load', tint);
-  tint();
+  addEventListener('scroll', function () { if (hdr) hdr.classList.toggle('scrolled', scrollY > 10); }, { passive: true });
   var first = document.querySelector('main > section');
   if (first && !reduce) {
     first.querySelectorAll('.t.big').forEach(function (el, i) { el.classList.add('hero-line'); el.style.setProperty('--d', (0.15 + i * 0.18) + 's'); });
@@ -40,7 +21,7 @@
   if ('IntersectionObserver' in window && !reduce) {
     var targets = [];
     document.querySelectorAll('main > section').forEach(function (sec, si) {
-      var items = sec.querySelectorAll('.stage > .a:not(.hero-line):not(.shape):not(.line):not(.srow), .srow > .a, .tcol > .tcard, .sp .wrap > *, .sp-weeks > *, .sp-want > li, .sp-ts > *, .sp-band, .ed-facts dl > div, .ed-hook .wrap > *, .ed-text > p, .ed-art, .ed-promise p, .ed-for-art, .ed-h, .ed-list li, .ed-grid li, .ed-acc details, .ed-steps li, .ed-car, .ed-author, .ed-sign, .ed-close, .ed-card, .ab-tx > *, .ab-ph, .ab2 p, .hm-portrait, .hm-about-tx > *, .hm-mission, .hm-h, .hm-spheres li, .hm-cta-tx > *, .hm-fl, .hm-svc, .hm-h2');
+      var items = sec.querySelectorAll('.stage > .a:not(.hero-line):not(.shape):not(.line):not(.srow), .srow > .a, .tcol > .tcard, .sp .wrap > *, .sp-weeks > *, .sp-want > li, .sp-ts > *, .sp-band, .ed-facts dl > div, .ed-hook .wrap > *, .ed-text > p, .ed-art, .ed-promise p, .ed-for-art, .ed-h, .ed-list li, .ed-grid li, .ed-acc details, .ed-steps li, .ed-car, .ed-author, .ed-sign, .ed-close, .ed-card, .ab-tx > *, .ab-ph, .ab2 p, .hm-portrait, .hm-about-tx > *, .hm-mission, .hm-h, .hm-spheres li, .hm-cta-tx > *, .hm-peony, .hm-svc, .hm-h2');
       var n = 0;
       items.forEach(function (el) {
         if (el.classList.contains('float')) return;
@@ -83,6 +64,15 @@
       if (!d.open) return;
       d.parentElement.querySelectorAll(':scope > details[open]').forEach(function (o) { if (o !== d) o.open = false; });
     });
+  });
+
+  // The peony opens once when its block scrolls into view, then rests on the last frame
+  document.querySelectorAll('video[data-bloom]').forEach(function (v) {
+    if (reduce || !('IntersectionObserver' in window)) return;
+    var vo = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { v.play().catch(function () {}); vo.unobserve(v); } });
+    }, { threshold: 0.45 });
+    vo.observe(v);
   });
 
   // Close the mobile menu after a tap on a link.

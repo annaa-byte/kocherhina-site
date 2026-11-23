@@ -42,7 +42,7 @@ def build():
         T(482, 182, 481, "ВІТАЮ ВАС", "C", 90, 90, "#000", "right", cls="big", tag="h1", extra="margin:0;"),
         T(517, 246, 446, "У СВОЄМУ", "C", 90, 90, "#000", "right", cls="big"),
         T(515, 310, 448, "ПРОСТОРІ", "C", 90, 90, "#000", "right", cls="big"),
-    ], bg=CREAM, cls="m-hero").replace("--h:600px", "--h:480px"))
+    ], bg="#fdfbf7", cls="m-hero").replace("--h:600px", "--h:480px"))
     # About: portrait in the salon's arch, words beside it — one person, one promise, one link
     secs.append(f'''<section class="hm-about"><div class="wrap hm-about-in">
 <figure class="hm-portrait"><img src="{img("2/694e7e27080a9d0140ffdb16_optimized_930.webp")}" alt="Наталя Кочергіна" loading="lazy"></figure>
@@ -60,7 +60,7 @@ def build():
             T(1, 15, 60, n, "F", 17, 24, "rgba(89,95,69,.6)", cls="p", extra="letter-spacing:.1em"),
             T(102, 11, 460, t, "C", 24, 30, "#2c2f22", cls="p", weight=500),
         ], cls="row", extra="border-bottom:1px solid rgba(89,95,69,.3);"))
-    secs.append(SEC(600, ch, bg=CREAM, id="sfery"))
+    secs.append(SEC(600, ch, bg="#fdfbf7", id="sfery"))
     # Mission grid
     secs.append(SEC(830, [
         I(188, 40, 221, 224, "2/694e7f3bc2c73c4433f45bca_optimized.webp"),
@@ -133,12 +133,11 @@ def build():
     secs.append(f'''<section class="ed-rev" id="vidguky"><div class="wrap"><p class="ed-k">Відгуки</p>
 <div class="ed-car" data-car><div class="ed-slides">{slides}</div>
 <div class="ed-ctl"><button type="button" data-prev aria-label="Попередній відгук">←</button><span class="ed-cnt"><b>01</b> / {len(keys):02d}</span><button type="button" data-next aria-label="Наступний відгук">→</button></div></div></div></section>''')
-    # Closing call: the two flowers frame one sentence and one button
+    # Closing call: the peony slowly opens next to the invitation (plays once when the block comes into view)
     secs.append(f'''<section class="hm-cta"><div class="wrap hm-cta-in">
-<img class="hm-fl" src="{img("2/694841a4c2caec12d4b177bd_optimized_1220.webp")}" alt="" loading="lazy">
+<div class="hm-peony"><video src="img/peony.mp4" poster="img/peony-poster.webp" muted playsinline preload="metadata" data-bloom></video></div>
 <div class="hm-cta-tx"><p>Ви вже в потрібному місці і в потрібний час.</p><p class="it">Зробіть крок до змін!</p>
-<a class="hm-btn" href="{TG_N}" target="_blank" rel="noopener">Подати заявку</a></div>
-<img class="hm-fl r" src="{img("2/694841a4c2caec12d4b177bd_optimized_1220_flop.webp")}" alt="" loading="lazy"></div></section>''')
+<a class="hm-btn" href="{TG_N}" target="_blank" rel="noopener">Подати заявку</a></div></div></section>''')
     body = "".join(secs)
     return page("Наталя Кочергіна — психотерапевт і психодинамічний коуч",
                 "Психоаналітичний психотерапевт і психодинамічний коуч Наталя Кочергіна: індивідуальна терапія, коучинг, групи та жіночий проєкт «Свобода бути жінкою».",
