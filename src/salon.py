@@ -126,13 +126,13 @@ def build():
 <div class="ed-car" data-car><div class="ed-slides">{slides}</div>
 <div class="ed-ctl"><button type="button" data-prev aria-label="Попередній відгук">←</button><span class="ed-cnt"><b>01</b> / {len(keys):02d}</span><button type="button" data-next aria-label="Наступний відгук">→</button></div></div></div></section>''')
     # B16 final CTA
-    secs.append(LIGHT + SEC(700, [
-        I(-37, 32, 622, 466, "1/69cfa4e7eecd0ca27089f7c3_optimized_1304_flop.webp"),
-        I(911, 181, 491, 391, "1/69cfa2feeecd0ca27089eec7_optimized_833_flop.webp"),
-        G(415, 169, 610, 362, [
+    secs.append(LIGHT + SEC(520, [
+        I(-37, 10, 622, 466, "1/69cfa4e7eecd0ca27089f7c3_optimized_1304_flop.webp"),
+        I(911, 100, 491, 391, "1/69cfa2feeecd0ca27089eec7_optimized_833_flop.webp"),
+        G(415, 79, 610, 362, [
             T(0, 48, 610, "НЕ ТРЕБА<br><i>ВІДМОВЛЯТИСЬ</i>", "F", 48, 48, OLIVE, "center", cls="h2"),
             T(0, 159, 610, "Якщо в цьому світі щось є -<br>ви можете це мати.", "F", 28, 28, OLIVE, "center", cls="p"),
-            BTN(173, 262, 264, 50, "НАПИСАТИ МЕНЕДЖЕРУ", TG_M, "fill", OLIVE, "#fff", 15, "C", 25, 'target="_blank" rel="noopener"', arrow=True),
+            BTN(195, 262, 220, 50, "ВЗЯТИ УЧАСТЬ", "#vartist", "fill", OLIVE, "#fff", 15, "C", 25, 'data-svc="buy"', arrow=True),
         ], bg=CREAM),
     ], bgimg="1/69cfa4c47ed93e76919e7f1b_optimized_1920.webp", bgpos="53.44% 45.28%"))
     secs = [blk(x[len(LIGHT):]) if x.startswith(LIGHT) else x for x in secs]
