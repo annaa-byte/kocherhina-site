@@ -90,6 +90,7 @@ img.a{object-fit:cover}
   .hdr nav{position:fixed;top:76px;left:0;right:0;background:#fffaf1;flex-direction:column;gap:0;padding:8px 24px 20px;display:none;border-top:1px solid rgba(89,95,69,.12)}
   .hdr nav a{padding:12px 0;font-size:20px;border-bottom:1px solid rgba(89,95,69,.12)}
   body.menu-open .hdr nav{display:flex}
+  .hdr.dark nav a{color:#3d4130}
   .fin{padding:40px 24px 30px;grid-template-columns:1fr;gap:30px;text-align:center}.fcol{align-items:center}
   .fbot{padding:18px 24px 28px}
   .f-top{padding:70px 20px 50px}.f-orn{width:160px;top:20px}.f-orn.l{left:-50px}.f-orn.r{right:-50px}.f-role{font-size:12px}
