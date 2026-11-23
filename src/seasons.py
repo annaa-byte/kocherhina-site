@@ -77,9 +77,8 @@ def editorial(s, card, n):
         o.append(f'''<section class="ed-story"><div class="wrap ed-story-in"><div class="ed-text">{paras}</div>
 <figure class="ed-art"><img src="{img(COLLAGE)}" alt="" loading="lazy"></figure></div></section>''')
     # 4. The promise — one sentence on olive
-    o.append(f'''<section class="ed-promise"><div class="wrap"><figure class="ed-author"><img src="{img(AUTHOR)}" alt="Наталя Кочергіна" loading="lazy"></figure>
-<p>{s.get("pinned") or s["topic"]}</p>
-<div class="ed-sign"><b>Наталя Кочергіна</b><span>психоаналітичний психотерапевт, авторка проєкту «Свобода бути жінкою»</span></div></div></section>''')
+    o.append(f'''<section class="ed-promise"><div class="wrap"><p>{s.get("pinned") or s["topic"]}</p>
+<div class="ed-sign"><figure class="ed-author"><img src="{img(AUTHOR)}" alt="Наталя Кочергіна" loading="lazy"></figure><div><b>Наталя Кочергіна</b><span>психоаналітичний психотерапевт, авторка проєкту «Свобода бути жінкою»</span></div></div></div></section>''')
     # 5. For whom — a calm numbered list, no repeated icons
     if s.get("forWhom"):
         ft = s.get("forWhomTitle") or "Цей сезон для вас, якщо ви:"
