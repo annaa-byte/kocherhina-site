@@ -119,11 +119,12 @@ img.a{object-fit:cover}
   .mbox h2{font-size:32px}
 
   /* home: hero */
-  /* the first screen is one composition: a big flower bleeding off the right edge, the greeting set large at the bottom left */
-  .m-hero{position:relative;overflow:hidden;min-height:calc(100svh - 76px);padding:0 22px 44px;display:flex;flex-direction:column;justify-content:flex-end;box-sizing:border-box}
-  .m-hero .stage{gap:0;align-items:flex-start;position:static;width:100%!important;margin:0!important;padding:0!important}
-  .m-hero img.a.keep{display:block!important;position:absolute!important;top:3%!important;right:-16%!important;width:88vw!important;max-height:72%;margin:0;object-fit:contain;object-position:right top}
-  .m-hero .t.big{position:relative;z-index:1;text-align:left!important;font-size:14vw!important;line-height:.98!important;white-space:nowrap}
+  /* first screen: the flower up top and a little to the left, the greeting centred and laid slightly over it */
+  .m-hero{position:relative;overflow:hidden;padding:24px 20px 56px}
+  .m-hero .stage{gap:0;align-items:center;position:static;width:100%!important;margin:0!important;padding:0!important}
+  .m-hero img.a.keep{display:block!important;position:relative!important;width:60vw!important;max-height:none;margin:0 0 0 -16vw;object-fit:contain;align-self:center}
+  .m-hero .t.big{position:relative;z-index:1;text-align:center!important;font-size:14vw!important;line-height:.98!important;white-space:nowrap}
+  .m-hero h1.t.big{margin-top:-9vw!important}
   /* home: about — photo first */
   .m-about .stage img.keep{order:-1;aspect-ratio:4/5;max-height:460px;object-position:50% 20%}
   .m-about .line{display:block!important;width:120px!important;height:1px!important;margin:4px auto}
@@ -162,6 +163,14 @@ img.a{object-fit:cover}
   .m-cta{padding:56px 20px}
   .m-cta .stage img.deco:first-child{display:block!important;width:180px!important;margin:0 auto -10px}
   /* salon & season heroes: cream panel content, photo on top */
+  .m-sbzh{padding:36px 22px 56px}
+  .m-sbzh .stage{gap:12px;align-items:center}
+  .m-sbzh .stage .arch-line{display:none}
+  .m-sbzh .stage img.sbz-arch{order:-1;width:78%!important;aspect-ratio:3/4;max-height:none;margin:0 auto 18px;border-radius:999px 999px 0 0!important}
+  .m-sbzh .stage .t.big{font-size:15vw!important;line-height:.95!important}
+  .m-sbzh .stage .btn{align-self:stretch}
+  .stage .want{padding:16px 0!important;border-top:1px solid rgba(89,95,69,.35)}
+  .stage .want .t{font-size:20px!important}
   .m-shero .stage{gap:10px}
   .m-shero .stage img.keep{order:-1;max-height:360px;object-fit:contain}
   .m-shero .stage .t.big{font-size:46px!important}

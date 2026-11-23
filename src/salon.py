@@ -25,35 +25,37 @@ def blk(h):
 
 def build():
     secs = []
-    # B2 hero
-    title = [T(326, 151, 422, "СВОБОДА", "C", 90, 90, OLIVE, "right", cls="big", tag="h1", extra="margin:0;"),
-             T(281, 215, 208, "БУТИ", "C", 90, 90, OLIVE, "left", italic=True, cls="big"),
-             T(425, 279, 362, "ЖІНКОЮ", "C", 90, 90, OLIVE, "right", italic=True, cls="big")]
-    buttons = [BTN(361, 441, 135, 47, "ПРОГРАМА", "#temy", "line", OLIVE, OLIVE, 16.5),
-               BTN(535, 441, 152, 45, "ВЗЯТИ УЧАСТЬ", "#vartist", "fill", OLIVE, "#fff", 15)]
-    secs.append(LIGHT + SEC(600, hero(title=title, buttons=buttons), bg=OLIVE, mbg=CREAM, cls="m-shero"))
+    # B2 hero: one calm composition — words on the left, Natalia in the salon's arch on the right, no frames or plaques
+    W = "#fdfbf7"
+    secs.append(LIGHT + SEC(660, [
+        S(812, 40, 420, 580, "", "1px solid rgba(89,95,69,.45)", extra="border-radius:210px 210px 0 0;", cls="shape arch-line"),
+        I(830, 58, 384, 562, "1/69cf722d3782636560075676_optimized.webp", cls="keep sbz-arch", extra="object-fit:cover;object-position:50% 20%;border-radius:192px 192px 0 0;"),
+        T(120, 146, 600, "психологічний салон", "F", 18, 22, OLIVE, "left", cls="p", extra="letter-spacing:.2em;text-transform:uppercase;opacity:.8"),
+        T(112, 190, 720, "СВОБОДА", "C", 100, 100, "#000", "left", cls="big", tag="h1", extra="margin:0;"),
+        T(112, 290, 720, "БУТИ ЖІНКОЮ", "C", 100, 100, "#000", "left", italic=True, cls="big"),
+        T(120, 414, 600, "by Natalia Kocherhina", "C", 24, 28, "#000", "left", 500, italic=True, cls="p", extra="opacity:.7"),
+        BTN(120, 478, 190, 52, "ПРОГРАМА", "#temy", "line", "#000", "#000", 17, "C", 26),
+        BTN(330, 478, 210, 52, "ВЗЯТИ УЧАСТЬ", "#vartist", "fill", OLIVE, W, 17, "C", 26),
+    ], bg=W, cls="m-sbzh"))
     # B3 mothers
     secs.append(LIGHT + SEC(466, [
         T(207, 82, 560, "Наші мами передали нам свої жіночі стратегії:<br>бути «зручними», терплячими, чимось поступатись або «тягнути все на собі».", "F", 28, 33.6, OLIVE, "left", cls="p", extra="max-width:540px"),
         T(207, 216, 520, "Але світ змінився, тепер ми маємо вибір<br>і хочемо жити по іншому.", "F", 28, 33.6, OLIVE, "left", cls="p"),
         I(743, 37, 588, 395, "1/69cf76daeecd0ca270892e11_optimized.webp", cls="keep"),
     ], bg=CREAM))
-    # B4 we want it all
-    SHIP = "1/69cf7a9deecd0ca2708941e6_optimized.webp"
-    wants = [(666, 240, 764, 193, "свої бажання та реалізацію без вигорання"),
-             (1044, 241, 1142, 193, "отримувати турботу від чоловіка і відчувати цінність в стосунках"),
-             (666, 418, 764, 370, "жити в розслабленому, здоровому тілі"),
-             (1044, 418, 1142, 370, "бути мамами, але мати час для себе без провини")]
+    # B4 we want it all: the four wishes as a quiet 2x2 list on hairlines, no stickers or brackets
+    wants = ["свої бажання та реалізацію без вигорання",
+             "отримувати турботу від чоловіка і відчувати цінність в стосунках",
+             "жити в розслабленому, здоровому тілі",
+             "бути мамами, але мати час для себе без провини"]
     ch = [I(120, 93, 435, 594, "1/69d1520aee8819f70862b88b_optimized.webp", cls="keep mob-hide"),
-          T(760, 78, 466, "МИ ХОЧЕМО МАТИ<br><i>ВСЕ Й ОДРАЗУ:</i>", "F", 48, 48, OLIVE, "center", cls="h2", tag="h2", extra="margin:0;")]
-    for cx, cy, sx, sy, t in wants:
-        ch.append(G(cx, cy, 276, 108, [T(24, 0, 228, t, "C", 21, 21, "#000", "center", cls="p",
-                                          extra="height:108px;display:flex;align-items:center;justify-content:center")], bg="#fff"))
-        ch.append(I(sx, sy, 79, 63, SHIP))
-    ch += [I(666, 587, 20, 100, "1/69cf7c0c3782636560077fa6_optimized.webp"),
-           T(760, 586, 466, "Це стає можливим, коли<br>ми злагоджені із собою<br>і своїм внутрішнім центром.", "F", 28, 28, OLIVE, "center", cls="p"),
-           I(1300, 587, 20, 100, "1/69cf7c0c3782636560077fa6_optimized_34_flop.webp")]
-    secs.append(LIGHT + SEC(799, ch, bg=CREAM))
+          T(680, 96, 540, "МИ ХОЧЕМО МАТИ<br><i>ВСЕ Й ОДРАЗУ:</i>", "F", 44, 50, "#000", "left", cls="h2", tag="h2", extra="margin:0;")]
+    for i, t in enumerate(wants):
+        x = 680 + (i % 2) * 290; y = 260 + (i // 2) * 140
+        ch.append(G(x, y, 250, 110, [T(0, 22, 250, t, "C", 23, 30, "#000", "left", 500, cls="p")], cls="want",
+                    extra="border-top:1px solid rgba(89,95,69,.35);"))
+    ch.append(T(680, 570, 540, "Це стає можливим, коли ми злагоджені із собою і своїм внутрішнім центром.", "C", 28, 36, OLIVE, "left", 500, italic=True, cls="p"))
+    secs.append(LIGHT + SEC(780, ch, bg=CREAM))
     # B6 about the project
     secs.append(LIGHT + SEC(800, [
         I(411, 20, 619, 761, "1/69cf7efa7ed93e76919ddebb_optimized_1028.webp"),
