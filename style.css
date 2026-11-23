@@ -41,9 +41,7 @@ img.a{object-fit:cover}
 .tcard{margin:0;padding:26px 20px 24px;text-align:center;box-shadow:0 1px 0 rgba(0,0,0,.04)}
 .tcard img{display:block;margin:0 auto 12px}
 .tcard blockquote{margin:0;font-family:var(--corm);font-weight:600;font-size:19px;line-height:24px;color:#000;padding-bottom:18px;border-bottom:1px solid #000}
-.scard{transition:transform .35s ease, box-shadow .35s ease;outline:1px solid rgba(89,95,69,.28);outline-offset:-9px}
-.scard::after{content:"";position:absolute;inset:9px;border-radius:103px 103px 0 0;border:1px solid rgba(89,95,69,.28);pointer-events:none}
-.scard{outline:none}
+.scard{transition:transform .25s ease, box-shadow .25s ease}
 .scard:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(89,95,69,.25)}
 
 /* ---------- modal form ---------- */
