@@ -101,6 +101,10 @@ def editorial(s, card, n):
         weeks = "".join(f'''<details{" open" if i == 0 else ""}><summary><span class="wk">Тиждень {i+1}</span><span class="tt">{t}</span><span class="pl" aria-hidden="true"></span></summary><p>{d}</p></details>''' for i, (t, d) in enumerate(s["program"]))
         o.append(f'''<section class="ed-prog" id="programa"><div class="wrap"><h2 class="ed-h">Програма сезону</h2>
 <p class="ed-sub">8 тижнів · натисніть на тиждень, щоб прочитати більше</p><div class="ed-acc">{weeks}</div></div></section>''')
+    elif s.get("questions"):
+        qs = "".join(f'<li><span class="qn">{i+1}</span><span class="qt">{q}</span></li>' for i, q in enumerate(s["questions"]))
+        o.append(f'''<section class="ed-prog" id="programa"><div class="wrap"><h2 class="ed-h">Програма сезону</h2>
+<p class="ed-sub big">{s["topic"]}</p><ol class="ed-qs">{qs}</ol></div></section>''')
     else:
         o.append(f'''<section class="ed-prog" id="programa"><div class="wrap"><h2 class="ed-h">Програма сезону</h2>
 <p class="ed-sub big">{s["topic"]}</p><p class="ed-sub">Детальна програма зʼявиться ближче до старту. Залиште заявку, і ми надішлемо її першою.</p></div></section>''')

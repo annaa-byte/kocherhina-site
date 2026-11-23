@@ -564,3 +564,11 @@ img.rv.in{transform:none}
 .pay-res .pay-btns .ln{background:transparent;color:#000;border:1px solid #000}
 @media (max-width:759px){.pay-res{padding:70px 0}.pay-res h1{font-size:38px}.pay-res p{font-size:19px}}
 .pay-res .ed-k{font-family:var(--forum);font-size:14px;letter-spacing:.18em;line-height:1.5}
+
+/* Season programme as numbered questions (seasons 3–5) */
+.ed-qs{list-style:none;margin:44px auto 0;padding:0;max-width:760px;text-align:left}
+.ed-qs li{display:grid;grid-template-columns:64px 1fr;gap:28px;align-items:center;padding:20px 0;border-top:1px solid rgba(89,95,69,.25)}
+.ed-qs li:last-child{border-bottom:1px solid rgba(89,95,69,.25)}
+.ed-qs .qn{display:grid;place-items:center;width:52px;height:78px;border:1px solid rgba(89,95,69,.6);border-radius:50%;font-family:var(--corm);font-size:44px;line-height:1;color:var(--olive)}
+.ed-qs .qt{font-family:var(--corm);font-weight:500;font-size:23px;line-height:1.45;color:#2c2f22}
+@media (max-width:759px){.ed-qs li{grid-template-columns:44px 1fr;gap:16px;padding:16px 0}.ed-qs .qn{width:38px;height:56px;font-size:32px}.ed-qs .qt{font-size:19px}}
