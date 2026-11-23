@@ -70,20 +70,27 @@ def build():
         I(188, 552, 221, 224, "2/694e7fe8dc4fd58c318ee1e6_optimized_572_c572x1024-0x0.webp"),
         I(536, 552, 221, 224, "2/694e7fe9c2c73c4433f45e1d_optimized_572_c572x1024-0x0.webp"),
     ], bgimg="2/6945cfbf364911d845d9da3b_optimized_2560.webp", cls="m-grid"))
-    # Services: white titles now sit on a soft shade, so they read on any photo
-    cards = [(120, "6947ff97364911d845de49e9_optimized_921.webp", "індивідуальна<br>терапія", 609),
-             (520, "694e852edc4fd58c318ef385_optimized.webp", "психодинамічний<br>коучінг", 609),
-             (920, "6948002c364911d845de4b73_optimized_921.webp", "групи", 641)]
-    ch = [T(120, 88, 1200, "ІНДИВІДУАЛЬНА РОБОТА ЗІ МНОЮ:", "F", 44, 50, OLIVE, "center", cls="h2", tag="h2", extra="margin:0;")]
-    for x, f, t, ty in cards:
-        ch.append(G(x, 151, 400, 609, [
-            I(0, 0, 400, 609, "2/" + f, cls="keep"),
-            S(0, 330, 400, 279, "linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.55))"),
-            T(32, ty - 151, 340, t, "F", 32, 32, "#fff", cls="h2"),
-            LINE(30, 534, 339, "#fff"),
-            f'<a class="a t" href="{TG_N}" target="_blank" rel="noopener" style="left:30px;top:562px;font-family:var(--forum);font-size:20px;line-height:30px;color:#fff;text-decoration:none">записатися →</a>',
-        ], cls="svc"))
-    secs.append(SEC(840, ch, bg=CREAM, id="poslugy"))
+    # Services: three arch-topped cards with air between them; details open in a popup that ends with an action
+    svc = [
+        ("terapiya", "6947ff97364911d845de49e9_optimized_921.webp", "індивідуальна терапія", "Індивідуальна терапія",
+         "Вартість сесії 150€", "Розклад сформований. Запис можливий на січень 2027.",
+         [("Як це відбувається?", "Робота з несвідомим для трансформації структур вашої особистості.<br>Я не вирішую вашу проблему, я допомагаю вам стати людиною, здатною вирішувати свої проблеми самостійно."),
+          ("Для кого?", "Для тих, хто відчуває, що застряг у проблемі або ходить по колу. Хто не знає, як вийти на новий рівень життя, стосунків, самовідчуття. Хто прагне комплексної зміни життя, а не лише вирішення конкретної проблеми."),
+          ("Результат", "Ви станете впевненішими у своїх силах, зможете глибше зрозуміти себе та свої життєві сценарії. Навички самостійного вирішення проблем дозволять вам бути більш адаптивними та гнучкими перед життєвими викликами.")]),
+        ("kouching", "694e852edc4fd58c318ef385_optimized.webp", "психодинамічний коучінг", "Психодинамічний коучінг", "", "", []),
+        ("grupy", "6948002c364911d845de4b73_optimized_921.webp", "групи", "Групи", "", "", []),
+    ]
+    cards = ""; pops = ""
+    for key, f, label, title, price, note, acc in svc:
+        cards += (f'''<button type="button" class="hm-svc" data-svc="{key}"><span class="hm-svc-img"><img src="{img("2/" + f)}" alt="" loading="lazy"></span>
+<span class="hm-svc-t">{label}</span><span class="hm-svc-more">детальніше <i>→</i></span></button>''')
+        items = "".join(f'<details{" open" if i == 0 else ""}><summary>{q}<span class="pl" aria-hidden="true"></span></summary><p>{a_}</p></details>' for i, (q, a_) in enumerate(acc))
+        pops += (f'''<div class="modal svc-pop" id="svc-{key}" aria-hidden="true" role="dialog"><div class="svc-box"><button class="mx" aria-label="Закрити" data-close>×</button>
+<img class="svc-img" src="{img("2/" + f)}" alt="" loading="lazy"><div class="svc-tx"><h2>{title}</h2>
+{f'<p class="svc-price">{price}</p>' if price else ''}{f'<p class="svc-note">{note}</p>' if note else ''}
+<div class="svc-acc">{items}</div><a class="hm-btn" href="{TG_N}" target="_blank" rel="noopener">Записатися</a></div></div></div>''')
+    secs.append(f'''<section class="hm-svcs" id="poslugy"><div class="wrap"><h2 class="hm-h2">Індивідуальна робота зі мною:</h2>
+<div class="hm-svc-row">{cards}</div></div>{pops}</section>''')
     # Products: one olive block in the salon's colours. Title in the centre, horse in an arch on the right,
     # the five seasons as beige cards underneath.
     C2 = "#fffaf1"; BEIGE = "#fff5e7"
