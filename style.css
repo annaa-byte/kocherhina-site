@@ -505,3 +505,23 @@ img.rv.in{transform:none}
   .stl b{display:inline-block;margin:0 12px 0 0}
   .stl span{font-size:20px}
 }
+
+/* Phone mission block (hidden on desktop) */
+.hm-mis-m{display:none}
+@media (max-width:759px){
+  .m-grid{display:none!important}
+  .hm-mis-m{display:block;background:var(--warm);padding:64px 0 72px}
+  .hm-mis-m p{margin:0 28px 36px;font-family:var(--corm);font-weight:500;font-size:24px;line-height:1.5;color:#000;text-align:center}
+  .hm-mis-m p i{display:block;margin-top:6px;font-size:36px;line-height:1.2;font-weight:600}
+  .mis-row{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 28px 4px;scroll-padding-left:28px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .mis-row::-webkit-scrollbar{display:none}
+  .mis-row img{flex:0 0 auto;width:70vw!important;height:auto!important;max-width:none;aspect-ratio:4/5;object-fit:cover;scroll-snap-align:start;border-radius:999px 999px 0 0}
+}
+/* Black text on light blocks: service popups and testimonials */
+.svc-tx,.svc-tx h2,.svc-price,.svc-note,.svc-acc summary,.svc-acc details p,.svc-box .mx{color:#000}
+.svc-acc .pl::before,.svc-acc .pl::after{background:#000}
+.ed-rev.ink .ed-slide{color:#000}
+.ed-rev.ink .ed-k,.ed-rev.ink .ed-cnt{color:rgba(0,0,0,.55)}
+.ed-rev.ink .ed-cnt b,.ed-rev.ink .ed-ctl button{color:#000}
+.ed-rev.ink .ed-ctl button{border-color:rgba(0,0,0,.3)}
+.ed-rev.ink .ed-ctl button:hover{background:#000;color:#fdfbf7}

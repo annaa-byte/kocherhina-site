@@ -70,6 +70,12 @@ def build():
         I(188, 552, 221, 224, "2/694e7fe8dc4fd58c318ee1e6_optimized_572_c572x1024-0x0.webp"),
         I(536, 552, 221, 224, "2/694e7fe9c2c73c4433f45e1d_optimized_572_c572x1024-0x0.webp"),
     ], bgimg="2/6945cfbf364911d845d9da3b_optimized_2560.webp", cls="m-grid"))
+    # Phone version of the mission: the sentence on its own, then the five pictures as a swipeable strip
+    MIS = ["694e7f3bc2c73c4433f45bca_optimized.webp", "694e7f3edc0acba3c58c1825_optimized.webp", "694e7fc8080a9d0140ffdf80_optimized.webp",
+           "694e7fe8dc4fd58c318ee1e6_optimized_572_c572x1024-0x0.webp", "694e7fe9c2c73c4433f45e1d_optimized_572_c572x1024-0x0.webp"]
+    strip = "".join(f'<img src="{img("2/" + f)}" alt="" loading="lazy">' for f in MIS)
+    secs.append(f'''<section class="hm-mis-m"><p>Моє завдання — допомогти вам звільнитися від внутрішніх обмежень і побудувати якісне життя у відповідності до вашого <i>справжнього Я!</i></p>
+<div class="mis-row">{strip}</div></section>''')
     # Services: three arch-topped cards with air between them; details open in a popup that ends with an action
     svc = [
         ("terapiya", "6947ff97364911d845de49e9_optimized_921.webp", "індивідуальна терапія", "Індивідуальна терапія",
@@ -122,7 +128,7 @@ def build():
     # Testimonials: one voice at a time (same pattern as the season pages)
     keys = "bdacef"
     slides = "".join(f'<blockquote class="ed-slide{" on" if i == 0 else ""}">{TESTI[k]}</blockquote>' for i, k in enumerate(keys))
-    secs.append(f'''<section class="ed-rev" id="vidguky"><div class="wrap"><p class="ed-k">Відгуки</p>
+    secs.append(f'''<section class="ed-rev ink" id="vidguky"><div class="wrap"><p class="ed-k">Відгуки</p>
 <div class="ed-car" data-car><div class="ed-slides">{slides}</div>
 <div class="ed-ctl"><button type="button" data-prev aria-label="Попередній відгук">←</button><span class="ed-cnt"><b>01</b> / {len(keys):02d}</span><button type="button" data-next aria-label="Наступний відгук">→</button></div></div></div></section>''')
     # Closing call: the original composition, two peonies around a white card
