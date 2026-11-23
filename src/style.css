@@ -36,6 +36,14 @@ img.a{object-fit:cover}
 .grp > .a{}
 .star{clip-path:polygon(50% 0,55% 40%,100% 50%,55% 60%,50% 100%,45% 60%,0 50%,45% 40%)}
 
+/* testimonial cards */
+.tcol{display:flex;flex-direction:column;gap:44px}
+.tcard{margin:0;padding:26px 20px 24px;text-align:center;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+.tcard img{display:block;margin:0 auto 12px}
+.tcard blockquote{margin:0;font-family:var(--corm);font-weight:600;font-size:19px;line-height:24px;color:#000;padding-bottom:18px;border-bottom:1px solid #000}
+.scard{transition:transform .25s ease, box-shadow .25s ease}
+.scard:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(89,95,69,.25)}
+
 /* ---------- modal form ---------- */
 .modal{position:fixed;inset:0;z-index:100;background:rgba(40,43,30,.55);display:none;align-items:center;justify-content:center;padding:16px}
 .modal.open{display:flex}
@@ -94,6 +102,10 @@ img.a{object-fit:cover}
   .stage .grp .btn{align-self:flex-start}
   .stage .row{display:flex!important;flex-wrap:wrap;gap:10px}
   .mob-hide{display:none!important}
+  .stage .tcol{gap:16px}
+  .stage .prod{padding:0 0 24px!important}
+  .stage .prod > .t,.stage .prod > .btn{margin:0 20px}
+  .stage .prod .scard{margin:0 20px}
   .sec.hasmbg{background:var(--mbg)!important}
   .stage .svc{background:#595f45;padding:0 0 22px!important}
   .stage .svc .t{padding:0 20px}

@@ -127,7 +127,7 @@ def build():
         BTN(120, 653, 232, 45, "ВЗЯТИ УЧАСТЬ", "#temy", "fill", C, "#000", 15),
     ], bgimg="1/69cfa37123efa9cc4461697a_optimized_1920.webp"))
     # B14 testimonials
-    secs.append(SEC(1333, testimonials("#fff", 0), bg=CREAM, id="vidguky"))
+    secs.append(SEC(1470, testimonials("#fff", 0), bg=CREAM, id="vidguky"))
     # B16 final CTA
     secs.append(SEC(700, [
         I(-37, 32, 622, 466, "1/69cfa4e7eecd0ca27089f7c3_optimized_1304_flop.webp"),
