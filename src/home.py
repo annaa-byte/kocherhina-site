@@ -133,11 +133,15 @@ def build():
     secs.append(f'''<section class="ed-rev" id="vidguky"><div class="wrap"><p class="ed-k">Відгуки</p>
 <div class="ed-car" data-car><div class="ed-slides">{slides}</div>
 <div class="ed-ctl"><button type="button" data-prev aria-label="Попередній відгук">←</button><span class="ed-cnt"><b>01</b> / {len(keys):02d}</span><button type="button" data-next aria-label="Наступний відгук">→</button></div></div></div></section>''')
-    # Closing call: the peony slowly opens next to the invitation (plays once when the block comes into view)
-    secs.append(f'''<section class="hm-cta"><div class="wrap hm-cta-in">
-<div class="hm-peony"><video src="img/peony.mp4" poster="img/peony-poster.webp" muted playsinline preload="metadata" data-bloom></video></div>
-<div class="hm-cta-tx"><p>Ви вже в потрібному місці і в потрібний час.</p><p class="it">Зробіть крок до змін!</p>
-<a class="hm-btn" href="{TG_N}" target="_blank" rel="noopener">Подати заявку</a></div></div></section>''')
+    # Closing call: the original composition, two peonies around a white card
+    secs.append(SEC(500, [
+        I(120, -50, 470, 410, "2/694841a4c2caec12d4b177bd_optimized_1220.webp"),
+        S(415, 79, 610, 362, "#fdfbf7"),
+        T(501, 148, 439, "ВИ ВЖЕ В ПОТРІБНОМУ МІСЦІ І В ПОТРІБНИЙ ЧАС.", "C", 28, 36.4, "#000", "center", cls="p"),
+        T(561, 257, 318, "ЗРОБІТЬ КРОК ДО ЗМІН!", "C", 28, 36.4, "#000", "center", cls="p"),
+        BTN(613, 348, 213, 50, "Подати заявку", TG_N, "fill", "#000", "#fff", 19, "C", 25, 'target="_blank" rel="noopener"', arrow=True),
+        I(891, 155, 452, 394, "2/694841a4c2caec12d4b177bd_optimized_1220_flop.webp"),
+    ], bg="#fdfbf7", cls="m-cta"))
     body = "".join(secs)
     return page("Наталя Кочергіна — психотерапевт і психодинамічний коуч",
                 "Психоаналітичний психотерапевт і психодинамічний коуч Наталя Кочергіна: індивідуальна терапія, коучинг, групи та жіночий проєкт «Свобода бути жінкою».",
