@@ -112,22 +112,13 @@ def build():
         T(330, 276, 600, '<a href="svoboda-buty-zhinkoyu.html" style="text-decoration:none">БУТИ ЖІНКОЮ</a>', "C", 86, 86, C2, "center", italic=True, cls="big"),
         T(360, 400, 540, "Це трансформаційний жіночий онлайн-простір, де ми повертаємося до своєї  цілісності, звільняємось від очікувань інших  та навʼязаних ролей, знаходимо ресурс та підтримку одна в одній, і будуємо життя за власним сценарієм.", "C", 21, 30, C2, "center", cls="p", **P),
         T(330, 556, 600, "5 сезонів · 8 тижнів кожен · лекції, вправи та живі групи", "F", 18, 22, C2, "center", cls="p", extra="opacity:.75"),
-        BTN(524, 600, 212, 50, "ПРО ПРОЄКТ", "svoboda-buty-zhinkoyu.html", "fill", C2, "#595f45", 17, "C", 25),
-        T(120, 726, 600, "ТЕМИ СЕЗОНІВ", "F", 28, 32, C2, "left", cls="h2"),
-        T(820, 732, 500, '<a href="svoboda-buty-zhinkoyu.html#temy" style="color:#fffaf1">усі сезони →</a>', "F", 20, 24, C2, "right", cls="p mob-hide"),
+        BTN(406, 600, 212, 50, "ПРО ПРОЄКТ", "svoboda-buty-zhinkoyu.html", "fill", C2, "#595f45", 17, "C", 25),
+        BTN(642, 600, 212, 50, "ТЕМИ СЕЗОНІВ", "svoboda-buty-zhinkoyu.html#temy", "line", "rgba(255,250,241,.7)", C2, 17, "C", 25),
     ]
-    row = []
-    for i, (n, t, st_, im, href) in enumerate(SEASON_CARDS):
-        row.append(G(120 + i * 244, 770, 224, 330, [
-            I(37, 44, 150, 136, im, cls="keep", extra="object-fit:contain;"),
-            T(12, 198, 200, f"СЕЗОН {n}", "F", 13, 16, "#595f45", "center", extra="opacity:.6;letter-spacing:.18em"),
-            T(12, 222, 200, t, "C", 25, 28, "#595f45", "center", 500, italic=True),
-            S(97, 272, 30, 1, "rgba(89,95,69,.35)"),
-            T(12, 284, 200, st_, "C", 16, 20, "#595f45", "center", 500, extra="opacity:.8"),
-            f'<a class="a" href="{href}" style="inset:0" aria-label="Сезон {n}. {t}"></a>',
-        ], bg=BEIGE, cls="scard", extra="border-radius:112px 112px 0 0;"))
-    ch.append('<div class="a srow" style="left:0;top:0;width:1440px;height:0">' + "".join(row) + '</div>')
-    secs.append(SEC(1170, ch, bg=OLIVE, id="produkty", cls="m-prod"))
+    # Seasons as one quiet line: a dot and a name each, no cards
+    items = "".join(f'<a href="{href}"{' class="now"' if n == 2 else ''}><i></i><b>0{n}</b><span>{t}</span></a>' for n, t, st_, im, href in SEASON_CARDS)
+    ch.append(f'<nav class="a stl" aria-label="Сезони" style="left:120px;top:776px;width:1200px">{items}</nav>')
+    secs.append(SEC(920, ch, bg=OLIVE, id="produkty", cls="m-prod"))
     # Testimonials: one voice at a time (same pattern as the season pages)
     keys = "bdacef"
     slides = "".join(f'<blockquote class="ed-slide{" on" if i == 0 else ""}">{TESTI[k]}</blockquote>' for i, k in enumerate(keys))

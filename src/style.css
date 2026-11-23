@@ -146,7 +146,7 @@ img.a{object-fit:cover}
   .stage .svc a.t{left:22px!important;bottom:20px;text-align:left!important}
   /* products: olive block, arch, seasons as a swipe row */
   .m-prod .stage{gap:14px}
-  .m-prod .stage > .btn{margin-bottom:26px}
+  .m-prod .stage > .btn{margin-bottom:0}
   .m-prod .stage > img.keep{order:-1;width:230px!important;height:320px!important;max-height:none;margin:0 auto 10px;border-radius:115px 115px 0 0}
   .m-prod .stage .t.big{font-size:46px!important}
   .m-prod .stage .srow{display:flex!important;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:20px;margin:6px -20px 0;padding:0 20px 8px;width:auto!important;-webkit-overflow-scrolling:touch}
@@ -481,3 +481,19 @@ img.rv.in{transform:none}
 }
 
 .hm-about .ed-k{color:rgba(0,0,0,.6)}
+
+/* Home: seasons as a single quiet line */
+.stl{display:flex;border-top:1px solid rgba(255,250,241,.28)}
+.stl a{flex:1;position:relative;padding-top:26px;text-align:center;color:#fffaf1;text-decoration:none;transition:opacity .3s}
+.stl a i{position:absolute;top:-4px;left:50%;width:7px;height:7px;margin-left:-4px;border-radius:50%;border:1px solid rgba(255,250,241,.8);background:#595f45}
+.stl a.now i{background:#fffaf1}
+.stl b{display:block;font-family:var(--forum);font-weight:400;font-size:13px;letter-spacing:.2em;opacity:.55;margin-bottom:8px}
+.stl span{font-family:var(--corm);font-style:italic;font-weight:500;font-size:22px;line-height:1.2}
+.stl:hover a{opacity:.55}.stl a:hover{opacity:1}
+@media (max-width:767px){
+  .m-prod .stage .stl{position:relative!important;left:auto!important;top:auto!important;width:auto!important;flex-direction:column;border-top:0;border-left:1px solid rgba(255,250,241,.28);margin:30px 0 10px 12px;text-align:left}
+  .stl a{text-align:left;padding:12px 0 12px 24px}
+  .stl a i{top:50%;left:-4px;margin:-4px 0 0}
+  .stl b{display:inline-block;margin:0 12px 0 0}
+  .stl span{font-size:20px}
+}
