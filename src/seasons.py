@@ -72,7 +72,8 @@ def editorial(s, card, n):
 <p>{strip(s.get("quoteNote"))}</p></div></section>''')
     # 3. Story: narrow reading column + one image for breathing room
     if s.get("intro"):
-        paras = "".join(f"<p>{p}</p>" for p in s["intro"])
+        hl = {2: 1}.get(n)  # paragraph set apart like a highlighted passage in a book
+        paras = "".join(f'<p class="ed-pull">{p}</p>' if i == hl else f"<p>{p}</p>" for i, p in enumerate(s["intro"]))
         o.append(f'''<section class="ed-story"><div class="wrap ed-story-in"><div class="ed-text">{paras}</div>
 <figure class="ed-art"><img src="{img(COLLAGE)}" alt="" loading="lazy"></figure></div></section>''')
     # 4. The promise — one sentence on olive
