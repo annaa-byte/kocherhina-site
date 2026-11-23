@@ -37,7 +37,7 @@ def build_one(n):
                 BTN(522, 441, 170, 45, "ПРИЄДНАТИСЯ", card["pay"], "fill", OLIVE, "#fff", 15, attrs='target="_blank" rel="noopener"'))
     bx = 322 if card["kind"] == "repeat" else 357
     buttons = [BTN(bx, 441, 135, 47, "ПРОГРАМА" if s.get("program") else "ВАРТІСТЬ", prog_btn, "line", OLIVE, OLIVE, 16.5), main_btn]
-    out = [SEC(600, hero(title=title, buttons=buttons, sub=SUBS[n], byline=status, photo=card["img"], photo_fit="contain"), bg=OLIVE, mbg=CREAM, cls="m-shero")]
+    out = [SEC(600, hero(title=title, buttons=buttons, sub=SUBS[n], byline=status, photo=card["img"], photo_fit="contain", photo_box=(790, 12, 450, 548)), bg=OLIVE, mbg=CREAM, cls="m-shero")]
     out.append(f'<nav class="sp-crumbs wrap"><a href="svoboda-buty-zhinkoyu.html">Свобода бути жінкою</a> / <span>Сезон {n}</span></nav>')
 
     out += editorial(s, card, n)
@@ -55,6 +55,7 @@ def build_one(n):
 
 COLLAGE = "1/69d1520aee8819f70862b88b_optimized.webp"
 SHELL = "1/69cf95e77ed93e76919e4019_optimized.webp"
+AUTHOR = "2/69484f85c2caec12d4b1a4ff_optimized_896.webp"
 CLOSE_BG = "1/69cfa37123efa9cc4461697a_optimized_1920.webp"
 
 def editorial(s, card, n):
@@ -64,7 +65,7 @@ def editorial(s, card, n):
     # 1. Key facts strip — orientation in one glance
     facts = [("Старт", start.replace("Сезон іде зараз, з ", "з ").replace("Старт запланований на ", "").replace("Повтор сезону завершився", "повтор за заявкою")),
              ("Тривалість", "8 тижнів"), ("Формат", "лекції, вправи, живі групи"), ("Вартість", "200$ · можливе розтермінування")]
-    o.append('<section class="ed-facts"><div class="wrap"><dl>' + "".join(f"<div><dt>{a}</dt><dd>{b}</dd></div>" for a, b in facts) + "</dl></div></section>")
+    facts_html = '<section class="ed-facts"><div class="wrap"><dl>' + "".join(f"<div><dt>{a}</dt><dd>{b}</dd></div>" for a, b in facts) + "</dl></div></section>"
     # 2. Hook: the quote, big and alone
     if s.get("quote"):
         o.append(f'''<section class="ed-hook"><div class="wrap"><blockquote>«{s["quote"]}»</blockquote>
@@ -75,11 +76,13 @@ def editorial(s, card, n):
         o.append(f'''<section class="ed-story"><div class="wrap ed-story-in"><div class="ed-text">{paras}</div>
 <figure class="ed-art"><img src="{img(COLLAGE)}" alt="" loading="lazy"></figure></div></section>''')
     # 4. The promise — one sentence on olive
-    o.append(f'<section class="ed-promise"><div class="wrap"><p>{s.get("pinned") or s["topic"]}</p></div></section>')
+    o.append(f'''<section class="ed-promise"><div class="wrap"><figure class="ed-author"><img src="{img(AUTHOR)}" alt="Наталя Кочергіна" loading="lazy"></figure>
+<p>{s.get("pinned") or s["topic"]}</p>
+<div class="ed-sign"><b>Наталя Кочергіна</b><span>психоаналітичний психотерапевт, авторка проєкту «Свобода бути жінкою»</span></div></div></section>''')
     # 5. For whom — a calm numbered list, no repeated icons
     if s.get("forWhom"):
         ft = s.get("forWhomTitle") or "Цей сезон для вас, якщо ви:"
-        items = "".join(f"<li><span>{i+1:02d}</span>{x}</li>" for i, x in enumerate(s["forWhom"]))
+        items = "".join(f"<li><span>{i+1:02d}</span>{x[:1].upper() + x[1:]}</li>" for i, x in enumerate(s["forWhom"]))
         o.append(f'''<section class="ed-for"><div class="wrap ed-for-in"><figure class="ed-for-art"><img src="{img(card["img"])}" alt="" loading="lazy"></figure>
 <div><h2 class="ed-h">{ft}</h2><ol class="ed-list">{items}</ol></div></div></section>''')
     # 6. Outcomes — 2x2 with large italic numerals
@@ -94,18 +97,31 @@ def editorial(s, card, n):
     else:
         o.append(f'''<section class="ed-prog" id="programa"><div class="wrap"><h2 class="ed-h">Програма сезону</h2>
 <p class="ed-sub big">{s["topic"]}</p><p class="ed-sub">Детальна програма зʼявиться ближче до старту. Залиште заявку, і ми надішлемо її першою.</p></div></section>''')
-    # 8. Format — three short columns
-    fmt = (strip(s.get("formatText")) or "").replace("<b>Формат:</b> ", "")
+    # 8. Format — four clear steps, words taken from the season text
+    ft = s.get("formatText") or ""
+    if ft:
+        day = re.search(r"(Що\w+) — групова", ft)
+        steps = [("8 лекцій", "з переглядом терапевтичного кіно"),
+                 (day.group(1) if day else "Щотижня", "групова зустріч у Zoom"),
+                 ("Вправи", "до кожної лекції, для саморефлексії"),
+                 ("1 рік", "доступу до матеріалів")]
+    else:
+        steps = [("8 тижнів", "занурення в тему"), ("Лекції", "у записі, з вправами та техніками"),
+                 ("Живі групи", "для глибокої зміни мислення та взаємної підтримки"), ("Телеграм", "підтримуюча група учасниць")]
+    cells = "".join(f'<li><span class="n">{i+1:02d}</span><b>{a}</b><p>{b}</p></li>' for i, (a, b) in enumerate(steps))
     guests = ""
     if s.get("guests"):
-        guests = '<div class="ed-guests"><h3>Гості-експерти</h3>' + "".join(f"<p><b>{a}</b><br>{b}</p>" for a, b in s["guests"]) + "</div>"
-    kpis = '<ul class="ed-fmt-k"><li><b>8</b>лекцій</li><li><b>8</b>живих груп</li><li><b>1</b>рік доступу</li></ul>' if fmt else '<ul class="ed-fmt-k"><li><b>8</b>тижнів</li><li><b>1</b>лекція на тиждень</li><li><b>1</b>жива група на тиждень</li></ul>'
-    o.append(f'''<section class="ed-fmt"><div class="wrap ed-fmt-in"><div><h2 class="ed-h light">Формат</h2>
-<p>{fmt or "Лекції в записі, вправи, техніки та живі групові зустрічі для глибокої зміни мислення та взаємної підтримки. Робота на базі глибинної психології."}</p></div>
-{kpis}{guests}</div></section>''')
-    # 9. Social proof right before the decision: three voices
-    tc = "".join(f'<figure class="ed-t"><blockquote>{TESTI[k]}</blockquote></figure>' for k in "dae")
-    o.append(f'<section class="ed-rev" id="vidguky"><div class="wrap"><h2 class="ed-h">Відгуки учасниць</h2><div class="ed-rev-in">{tc}</div></div></section>')
+        guests = ('<div class="ed-guests"><h3>Гості-експерти</h3><p>У кожному потоці до групи долучаються запрошені експерти. '
+                  'Склад гостей щоразу змінюється.</p></div>')
+    o.append(f'''<section class="ed-fmt"><div class="wrap"><h2 class="ed-h light">Як проходить сезон</h2>
+<ol class="ed-steps">{cells}</ol>{guests}</div></section>''')
+    # 9. Social proof: one voice at a time, large, with a gentle carousel
+    keys = "dabcef"
+    slides = "".join(f'<blockquote class="ed-slide{" on" if i == 0 else ""}">{TESTI[k]}</blockquote>' for i, k in enumerate(keys))
+    o.append(f'''<section class="ed-rev" id="vidguky"><div class="wrap"><p class="ed-k">Відгуки учасниць</p>
+<div class="ed-car" data-car><div class="ed-slides">{slides}</div>
+<div class="ed-ctl"><button type="button" data-prev aria-label="Попередній відгук">←</button><span class="ed-cnt"><b>01</b> / {len(keys):02d}</span><button type="button" data-next aria-label="Наступний відгук">→</button></div></div></div></section>''')
+    o.append(facts_html)
     # 10. Decision: closing words + price + one action
     cl = "".join(f"<p>{p}</p>" for p in (s.get("closing") or []))
     o.append(f'''<section class="ed-buy" id="vartist" style="background-image:url('{img(CLOSE_BG)}')"><div class="wrap ed-buy-in">

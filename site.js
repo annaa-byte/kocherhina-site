@@ -21,7 +21,7 @@
   if ('IntersectionObserver' in window && !reduce) {
     var targets = [];
     document.querySelectorAll('main > section').forEach(function (sec, si) {
-      var items = sec.querySelectorAll('.stage > .a:not(.hero-line):not(.shape):not(.line):not(.srow), .srow > .a, .tcol > .tcard, .sp .wrap > *, .sp-weeks > *, .sp-want > li, .sp-ts > *, .sp-band, .ed-facts dl > div, .ed-hook .wrap > *, .ed-text > p, .ed-art, .ed-promise p, .ed-for-art, .ed-h, .ed-list li, .ed-grid li, .ed-acc details, .ed-fmt-in > *, .ed-rev-in > *, .ed-close, .ed-card, .ab-tx > *, .ab-ph, .ab2 p');
+      var items = sec.querySelectorAll('.stage > .a:not(.hero-line):not(.shape):not(.line):not(.srow), .srow > .a, .tcol > .tcard, .sp .wrap > *, .sp-weeks > *, .sp-want > li, .sp-ts > *, .sp-band, .ed-facts dl > div, .ed-hook .wrap > *, .ed-text > p, .ed-art, .ed-promise p, .ed-for-art, .ed-h, .ed-list li, .ed-grid li, .ed-acc details, .ed-steps li, .ed-car, .ed-author, .ed-sign, .ed-close, .ed-card, .ab-tx > *, .ab-ph, .ab2 p');
       var n = 0;
       items.forEach(function (el) {
         if (el.classList.contains('float')) return;
@@ -35,6 +35,19 @@
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
     targets.forEach(function (t) { io.observe(t); });
   }
+
+  // Testimonial carousel on season pages
+  document.querySelectorAll('[data-car]').forEach(function (car) {
+    var sl = car.querySelectorAll('.ed-slide'), cnt = car.querySelector('.ed-cnt b'), i = 0, timer;
+    function go(d) {
+      sl[i].classList.remove('on'); i = (i + d + sl.length) % sl.length; sl[i].classList.add('on');
+      cnt.textContent = (i < 9 ? '0' : '') + (i + 1);
+    }
+    function auto() { clearInterval(timer); if (!reduce) timer = setInterval(function () { go(1); }, 9000); }
+    car.querySelector('[data-prev]').addEventListener('click', function () { go(-1); auto(); });
+    car.querySelector('[data-next]').addEventListener('click', function () { go(1); auto(); });
+    auto();
+  });
 
   // Close the mobile menu after a tap on a link.
   document.querySelectorAll('.hdr nav a').forEach(function (a) {

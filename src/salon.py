@@ -5,7 +5,7 @@ TG_M = "https://t.me/pnm_a"
 STAR = "star"
 
 def hero(ch_extra=None, photo="1/69cf722d3782636560075676_optimized.webp", title=None, sub="психологічний салон",
-         byline="by Natalia Kocherhina", buttons=None, photo_fit="cover"):
+         byline="by Natalia Kocherhina", buttons=None, photo_fit="cover", photo_box=(903, 120, 297, 360)):
     ch = [I(120, 30, 375, 540, "1/69cf74dc7ed93e76919db552_optimized.webp"),
           I(945, 30, 375, 540, "1/69cf74dc7ed93e76919db552_optimized_670_flop.webp"),
           S(200, 80, 1040, 440, CREAM, cls="shape")]
@@ -13,7 +13,7 @@ def hero(ch_extra=None, photo="1/69cf722d3782636560075676_optimized.webp", title
     ch += title
     ch.append(T(244, 383, 560, byline, "F", 28, 33.6, OLIVE, "center", cls="p"))
     ch += buttons
-    ch.append(I(903, 120, 297, 360, photo, cls="keep", extra=f"object-fit:{photo_fit};"))
+    ch.append(I(*photo_box, photo, cls="keep hero-art", extra=f"object-fit:{photo_fit};object-position:50% 100%;"))
     return ch
 
 def build():
