@@ -24,7 +24,7 @@ def build():
              T(425, 279, 362, "ЖІНКОЮ", "C", 90, 90, OLIVE, "right", italic=True, cls="big")]
     buttons = [BTN(361, 441, 135, 47, "ПРОГРАМА", "#temy", "line", OLIVE, OLIVE, 16.5),
                BTN(535, 441, 152, 45, "ВЗЯТИ УЧАСТЬ", "#vartist", "fill", OLIVE, "#fff", 15)]
-    secs.append(SEC(600, hero(title=title, buttons=buttons), bg=OLIVE, mbg=CREAM))
+    secs.append(SEC(600, hero(title=title, buttons=buttons), bg=OLIVE, mbg=CREAM, cls="m-shero"))
     # B3 mothers
     secs.append(SEC(466, [
         T(207, 82, 560, "Наші мами передали нам свої жіночі стратегії:<br>бути «зручними», терплячими, чимось поступатись або «тягнути все на собі».", "F", 28, 33.6, OLIVE, "left", cls="p", extra="max-width:540px"),
@@ -127,7 +127,7 @@ def build():
         BTN(120, 653, 232, 45, "ВЗЯТИ УЧАСТЬ", "#temy", "fill", C, "#000", 15),
     ], bgimg="1/69cfa37123efa9cc4461697a_optimized_1920.webp"))
     # B14 testimonials
-    secs.append(SEC(1470, testimonials("#fff", 0), bg=CREAM, id="vidguky"))
+    secs.append(SEC(1470, testimonials("#fff", 0), bg=CREAM, id="vidguky", cls="m-testi"))
     # B16 final CTA
     secs.append(SEC(700, [
         I(-37, 32, 622, 466, "1/69cfa4e7eecd0ca27089f7c3_optimized_1304_flop.webp"),

@@ -38,11 +38,11 @@ def build():
     P = dict(weight=500)  # body text: Cormorant 500 reads much better than the original hairline 400
     # Hero: same composition, plus who she is and one clear action
     secs.append(SEC(600, [
-        I(318, 45, 220, 304, "2/6945c466f079e06014374273_optimized_969.webp", cls="keep mob-hide"),
+        I(318, 45, 220, 304, "2/6945c466f079e06014374273_optimized_969.webp", cls="keep"),
         T(482, 182, 481, "ВІТАЮ ВАС", "C", 90, 90, "#000", "right", cls="big", tag="h1", extra="margin:0;"),
         T(517, 246, 446, "У СВОЄМУ", "C", 90, 90, "#000", "right", cls="big"),
         T(515, 310, 448, "ПРОСТОРІ", "C", 90, 90, "#000", "right", cls="big"),
-    ], bg="#fff"))
+    ], bg="#fff", cls="m-hero"))
     # About (lifted 80px: the original had a dead gap under the hero)
     secs.append(SEC(640, [
         T(368, 122, 300, "Наталя Кочергіна", "C", 40, 52, "#000", "left", cls="h2"),
@@ -51,7 +51,7 @@ def build():
         T(262, 282, 501, "Мій метод — це тонка робота з особистістю, де поєднуються психоаналіз, коучинг і системне бачення. Я спираюся на повагу до індивідуальності і впевнена, що в кожній людині є прихований потенціал для змін.", "C", 21, 30, "#000", "center", cls="p", **P),
         BTN(434, 462, 158, 40, "ПРО МЕНЕ", "about.html", "line", "#000", "#000", 15),
         I(937, 0, 383, 575, "2/694e7e27080a9d0140ffdb16_optimized_930.webp", cls="keep", alt="Наталя Кочергіна"),
-    ], bg="#fff"))
+    ], bg="#fff", cls="m-about"))
     # Spheres
     rows = [("01", "тіло та здоровʼя"), ("02", "гроші, реалізація та особистий потенціал"),
             ("03", "лідерство та управління командою"), ("04", "сімʼя. стосунки між батьками та дітьми"),
@@ -59,7 +59,7 @@ def build():
     ch = [T(441, 29, 559, "Я ПРАЦЮЮ ІЗ ЗАПИТАМИ<br>НА ЗМІНИ У ТАКИХ СФЕРАХ:", "F", 48, 48, "#000", "center", cls="h2", tag="h2", extra="margin:0;")]
     for i, (n, t) in enumerate(rows):
         ch.append(G(630, 166 + i * 42, 570, 42, [
-            T(1, 7, 60, n, "F", 25, 28, "#000", cls="p", extra="position:absolute"),
+            T(1, 7, 60, n, "F", 25, 28, "#000", cls="p"),
             T(102, 7, 460, t, "F", 25, 28, "#000", cls="p"),
         ], cls="row", extra="border-bottom:1px solid #000;"))
     secs.append(SEC(420, ch, bg="#fff", id="sfery"))
@@ -71,7 +71,7 @@ def build():
         T(281, 355, 440, "Моє завдання — допомогти вам звільнитися від внутрішніх обмежень і побудувати якісне життя у відповідності до вашого справжнього Я!", "C", 24, 32, "#000", "left", cls="p", **P),
         I(188, 552, 221, 224, "2/694e7fe8dc4fd58c318ee1e6_optimized_572_c572x1024-0x0.webp"),
         I(536, 552, 221, 224, "2/694e7fe9c2c73c4433f45e1d_optimized_572_c572x1024-0x0.webp"),
-    ], bgimg="2/6945cfbf364911d845d9da3b_optimized_2560.webp"))
+    ], bgimg="2/6945cfbf364911d845d9da3b_optimized_2560.webp", cls="m-grid"))
     # Services: white titles now sit on a soft shade, so they read on any photo
     cards = [(120, "6947ff97364911d845de49e9_optimized_921.webp", "індивідуальна<br>терапія", 609),
              (520, "694e852edc4fd58c318ef385_optimized.webp", "психодинамічний<br>коучінг", 609),
@@ -103,17 +103,19 @@ def build():
         T(120, 726, 600, "ТЕМИ СЕЗОНІВ", "F", 28, 32, C2, "left", cls="h2"),
         T(820, 732, 500, '<a href="svoboda-buty-zhinkoyu.html#temy" style="color:#fffaf1">усі сезони →</a>', "F", 20, 24, C2, "right", cls="p mob-hide"),
     ]
+    row = []
     for i, (n, t, st_, im, href) in enumerate(SEASON_CARDS):
-        ch.append(G(120 + i * 244, 780, 224, 300, [
+        row.append(G(120 + i * 244, 780, 224, 300, [
             I(37, 20, 150, 140, im, cls="keep", extra="object-fit:contain;"),
             T(20, 172, 184, f"Сезон {n}", "F", 16, 18, "#595f45", "left", extra="opacity:.65"),
             T(20, 194, 184, t, "F", 22, 25, "#595f45", "left", 700),
             T(20, 252, 184, st_, "F", 16, 18, "#595f45", "left", extra="opacity:.85"),
             f'<a class="a" href="{href}" style="inset:0" aria-label="Сезон {n}. {t}"></a>',
         ], bg=BEIGE, cls="scard"))
-    secs.append(SEC(1170, ch, bg=OLIVE, id="produkty"))
+    ch.append('<div class="a srow" style="left:0;top:0;width:1440px;height:0">' + "".join(row) + '</div>')
+    secs.append(SEC(1170, ch, bg=OLIVE, id="produkty", cls="m-prod"))
     # Testimonials
-    secs.append(SEC(1480, testimonials("#f8f8f8", dy=20), bg="#fff", id="vidguky"))
+    secs.append(SEC(1480, testimonials("#f8f8f8", dy=20), bg="#fff", id="vidguky", cls="m-testi"))
     # CTA
     secs.append(SEC(500, [
         I(120, -50, 470, 410, "2/694841a4c2caec12d4b177bd_optimized_1220.webp"),
@@ -123,7 +125,7 @@ def build():
         BTN(613, 348, 213, 50, "Подати заявку", TG_N, "fill", "#000", "#fff", 19, "C", 25, 'target="_blank" rel="noopener"', arrow=True),
         I(891, 155, 452, 394, "2/694841a4c2caec12d4b177bd_optimized_1220_flop.webp"),
         LINE(120, 488, 1200, "#000"),
-    ], bg="#fff"))
+    ], bg="#fff", cls="m-cta"))
     body = "".join(secs)
     return page("Наталя Кочергіна — психотерапевт і психодинамічний коуч",
                 "Психоаналітичний психотерапевт і психодинамічний коуч Наталя Кочергіна: індивідуальна терапія, коучинг, групи та жіночий проєкт «Свобода бути жінкою».",
