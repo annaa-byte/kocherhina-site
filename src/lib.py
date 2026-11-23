@@ -50,7 +50,9 @@ def BTN(x, y, w, h, label, href, kind="fill", color=OLIVE, text="#fff", size=15,
         s = f"background:{color};border:1px solid {color};color:{text};"
     else:
         s = f"background:transparent;border:1px solid {color};color:{text};"
-    ar = f'<span class="arr" style="color:{color}">↗</span>' if arrow else ""
+    # Drawn arrow: the ↗ character turns into a blue emoji on iPhones
+    ar = (f'<span class="arr" style="color:{color}"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">'
+          '<path d="M3 11 11 3M5 3h6v6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>') if arrow else ""
     return (f'<a class="a btn" href="{href}" {attrs} style="{st(x, y, w, h)}{s}border-radius:{radius}px;'
             f'font-family:{fam};font-size:{size}px;">{label}{ar}</a>')
 
