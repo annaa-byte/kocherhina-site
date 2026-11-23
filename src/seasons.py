@@ -40,60 +40,7 @@ def build_one(n):
     out = [SEC(600, hero(title=title, buttons=buttons, sub=SUBS[n], byline=status, photo=card["img"], photo_fit="contain"), bg=OLIVE, mbg=CREAM, cls="m-shero")]
     out.append(f'<nav class="sp-crumbs wrap"><a href="svoboda-buty-zhinkoyu.html">Свобода бути жінкою</a> / <span>Сезон {n}</span></nav>')
 
-    if s.get("intro"):
-        paras = "".join(f"<p>{p}</p>" for p in s["intro"])
-        q = f'''<figure class="sp-quote"><img src="{img(SHIP)}" alt="" width="79" height="63"><blockquote>{s["quote"]}</blockquote><p>{strip(s.get("quoteNote"))}</p></figure>''' if s.get("quote") else ""
-        out.append(f'<section class="sp cream"><div class="wrap sp-intro"><div class="sp-col">{paras}</div>{q}</div></section>')
-    if s.get("pinned"):
-        out.append(f'<section class="sp olive"><div class="sp-band"><p>{s["pinned"]}</p></div></section>')
-    else:
-        out.append(f'<section class="sp olive"><div class="sp-band"><p>{s["topic"]}</p></div></section>')
-
-    if s.get("forWhom"):
-        ft = s.get("forWhomTitle") or "Цей сезон для вас, якщо ви:"
-        cards = "".join(f'<li><img src="{img(SHIP)}" alt="" width="58" height="46"><span>{x}</span></li>' for x in s["forWhom"])
-        out.append(f'<section class="sp cream"><div class="wrap"><h2 class="sp-h">{ft.upper()}</h2><ul class="sp-want">{cards}</ul></div></section>')
-    if s.get("outcomes"):
-        rows = "".join(f'<li><span class="sp-star star"></span>{x}</li>' for x in s["outcomes"])
-        out.append(f'''<section class="sp olive"><div class="wrap sp-two"><div class="sp-ell"><img src="{img(ELLIPSE)}" alt=""><h2>ЩО ВИ ОТРИМАЄТЕ</h2></div><ul class="sp-rows">{rows}</ul></div></section>''')
-    if s.get("program"):
-        weeks = "".join(f'<article class="sp-week"><span>ТИЖДЕНЬ {i+1}</span><h3>{t}</h3><p>{d}</p></article>' for i, (t, d) in enumerate(s["program"]))
-        out.append(f'''<section class="sp cream" id="programa"><div class="wrap"><h2 class="sp-h">ПРОГРАМА СЕЗОНУ</h2>
-<img class="sp-jag" src="{img(JAG)}" alt=""><div class="sp-weeks">{weeks}</div><img class="sp-jag" src="{img(JAGF)}" alt=""></div></section>''')
-    else:
-        out.append(f'''<section class="sp cream" id="programa"><div class="wrap"><h2 class="sp-h">ПРОГРАМА СЕЗОНУ</h2>
-<p class="sp-lead">{s["topic"]}</p><p class="sp-lead soft">Детальна програма зʼявиться ближче до старту. Залиште заявку, і ми надішлемо її першою.</p></div></section>''')
-
-    fmt = strip(s.get("formatText")) or "Лекції в записі, вправи, техніки та живі групові зустрічі для глибокої зміни мислення та взаємної підтримки. Робота на базі глибинної психології."
-    fmt = fmt.replace("<b>Формат:</b> ", "")
-    guests = ""
-    if s.get("guests"):
-        guests = '<div class="sp-guests"><h3>ГОСТІ-ЕКСПЕРТИ</h3>' + "".join(f"<p><b>{a}</b> — {b}</p>" for a, b in s["guests"]) + "</div>"
-    out.append(f'''<section class="sp olive"><div class="wrap sp-two"><div class="sp-ell"><img src="{img(ELLIPSE)}" alt=""><h2>ФОРМАТ</h2></div>
-<div><p class="sp-fmt">{fmt}</p><ul class="sp-rows small"><li><b>8 тижнів</b> тривалість сезону</li><li><b>1 лекція і 1 жива група</b> на тиждень</li></ul>{guests}</div></div></section>''')
-
-    feats = "".join(f'<li><span class="sp-star star"></span>{f}</li>' for f in ["8 тижнів занурення в тему", "Доступ до записів лекцій та вправ", "Підтримуюча група в Телеграм каналі", "Живі групи з автором"])
-    out.append(f'''<section class="sp olive" id="vartist"><div class="wrap"><h2 class="sp-h light"><i>ВАРТІСТЬ</i> ТА УЧАСТЬ</h2>
-<div class="sp-price"><div><h3>Єдиний тариф:</h3><ul>{feats}</ul></div>
-<div class="sp-pr"><h3>Ціна за сезон<br>200$</h3><p>Можливе розтермінування</p>{cta(card)}</div></div>
-<p class="sp-lim">КІЛЬКІСТЬ МІСЦЬ <i>ОБМЕЖЕНА</i><small>для збереження камерної атмосфери</small></p></div></section>''')
-
-    if s.get("closing"):
-        cl = "".join(f"<p>{p}</p>" for p in s["closing"])
-        out.append(f'''<section class="sp-close" style="background-image:url('{img("1/69cfa37123efa9cc4461697a_optimized_1920.webp")}')"><div class="wrap"><div class="sp-close-in">{cl}</div></div></section>''')
-
-    tcards = "".join(f'<figure class="sp-t"><img src="{img(QUOTE)}" alt="" width="25" height="19"><blockquote>{TESTI[k]}</blockquote></figure>' for k in "debacf")
-    out.append(f'<section class="sp cream" id="vidguky"><div class="wrap"><h2 class="sp-h dark">ВІДГУКИ:</h2><div class="sp-ts">{tcards}</div></div></section>')
-
-    out.append(SEC(700, [
-        I(-37, 32, 622, 466, "1/69cfa4e7eecd0ca27089f7c3_optimized_1304_flop.webp"),
-        I(911, 181, 491, 391, "1/69cfa2feeecd0ca27089eec7_optimized_833_flop.webp"),
-        G(415, 169, 610, 362, [
-            T(0, 48, 610, "НЕ ТРЕБА<br><i>ВІДМОВЛЯТИСЬ</i>", "F", 48, 48, OLIVE, "center", cls="h2"),
-            T(0, 159, 610, "Якщо в цьому світі щось є -<br>ви можете це мати.", "F", 28, 28, OLIVE, "center", cls="p"),
-            BTN(173, 262, 264, 50, "НАПИСАТИ МЕНЕДЖЕРУ", "https://t.me/pnm_a", "fill", OLIVE, "#fff", 15, "C", 25, 'target="_blank" rel="noopener"', arrow=True),
-        ], bg=CREAM),
-    ], bgimg="1/69cfa4c47ed93e76919e7f1b_optimized_1920.webp", bgpos="53.44% 45.28%"))
+    out += editorial(s, card, n)
 
     nav = []
     if n > 1: nav.append(f'<a href="season-{n-1}.html">← Сезон {n-1}</a>')
@@ -104,3 +51,67 @@ def build_one(n):
     name = {1: "Стосунки з собою", 2: "Power Couple. Стосунки у парі", 3: "Гроші та реалізація", 4: "Тіло та здоровʼя", 5: "Імідж та краса"}[n]
     return page(f"Сезон {n}. {name} — Свобода бути жінкою", f"{name}: 8 тижнів лекцій, вправ і живих груп з Наталею Кочергіною. {s['topic']}",
                 "".join(out), "svoboda-buty-zhinkoyu.html")
+
+
+COLLAGE = "1/69d1520aee8819f70862b88b_optimized.webp"
+SHELL = "1/69cf95e77ed93e76919e4019_optimized.webp"
+CLOSE_BG = "1/69cfa37123efa9cc4461697a_optimized_1920.webp"
+
+def editorial(s, card, n):
+    """Season page body, art-directed: one idea per screen, readable measure, progressive disclosure."""
+    o = []
+    start = re.sub(r"\. Залиште.*$", "", card["status"])
+    # 1. Key facts strip — orientation in one glance
+    facts = [("Старт", start.replace("Сезон іде зараз, з ", "з ").replace("Старт запланований на ", "").replace("Повтор сезону завершився", "повтор за заявкою")),
+             ("Тривалість", "8 тижнів"), ("Формат", "лекції, вправи, живі групи"), ("Вартість", "200$ · можливе розтермінування")]
+    o.append('<section class="ed-facts"><div class="wrap"><dl>' + "".join(f"<div><dt>{a}</dt><dd>{b}</dd></div>" for a, b in facts) + "</dl></div></section>")
+    # 2. Hook: the quote, big and alone
+    if s.get("quote"):
+        o.append(f'''<section class="ed-hook"><div class="wrap"><blockquote>«{s["quote"]}»</blockquote>
+<p>{strip(s.get("quoteNote"))}</p></div></section>''')
+    # 3. Story: narrow reading column + one image for breathing room
+    if s.get("intro"):
+        paras = "".join(f"<p>{p}</p>" for p in s["intro"])
+        o.append(f'''<section class="ed-story"><div class="wrap ed-story-in"><div class="ed-text">{paras}</div>
+<figure class="ed-art"><img src="{img(COLLAGE)}" alt="" loading="lazy"></figure></div></section>''')
+    # 4. The promise — one sentence on olive
+    o.append(f'<section class="ed-promise"><div class="wrap"><p>{s.get("pinned") or s["topic"]}</p></div></section>')
+    # 5. For whom — a calm numbered list, no repeated icons
+    if s.get("forWhom"):
+        ft = s.get("forWhomTitle") or "Цей сезон для вас, якщо ви:"
+        items = "".join(f"<li><span>{i+1:02d}</span>{x}</li>" for i, x in enumerate(s["forWhom"]))
+        o.append(f'''<section class="ed-for"><div class="wrap ed-for-in"><figure class="ed-for-art"><img src="{img(card["img"])}" alt="" loading="lazy"></figure>
+<div><h2 class="ed-h">{ft}</h2><ol class="ed-list">{items}</ol></div></div></section>''')
+    # 6. Outcomes — 2x2 with large italic numerals
+    if s.get("outcomes"):
+        items = "".join(f"<li><span>{i+1}</span><p>{x}</p></li>" for i, x in enumerate(s["outcomes"]))
+        o.append(f'''<section class="ed-out"><div class="wrap"><h2 class="ed-h light">Що ви отримаєте</h2><ul class="ed-grid">{items}</ul></div></section>''')
+    # 7. Program — accordion: titles at a glance, details on demand
+    if s.get("program"):
+        weeks = "".join(f'''<details{" open" if i == 0 else ""}><summary><span class="wk">Тиждень {i+1}</span><span class="tt">{t}</span><span class="pl" aria-hidden="true"></span></summary><p>{d}</p></details>''' for i, (t, d) in enumerate(s["program"]))
+        o.append(f'''<section class="ed-prog" id="programa"><div class="wrap"><h2 class="ed-h">Програма сезону</h2>
+<p class="ed-sub">8 тижнів · натисніть на тиждень, щоб прочитати більше</p><div class="ed-acc">{weeks}</div></div></section>''')
+    else:
+        o.append(f'''<section class="ed-prog" id="programa"><div class="wrap"><h2 class="ed-h">Програма сезону</h2>
+<p class="ed-sub big">{s["topic"]}</p><p class="ed-sub">Детальна програма зʼявиться ближче до старту. Залиште заявку, і ми надішлемо її першою.</p></div></section>''')
+    # 8. Format — three short columns
+    fmt = (strip(s.get("formatText")) or "").replace("<b>Формат:</b> ", "")
+    guests = ""
+    if s.get("guests"):
+        guests = '<div class="ed-guests"><h3>Гості-експерти</h3>' + "".join(f"<p><b>{a}</b><br>{b}</p>" for a, b in s["guests"]) + "</div>"
+    kpis = '<ul class="ed-fmt-k"><li><b>8</b>лекцій</li><li><b>8</b>живих груп</li><li><b>1</b>рік доступу</li></ul>' if fmt else '<ul class="ed-fmt-k"><li><b>8</b>тижнів</li><li><b>1</b>лекція на тиждень</li><li><b>1</b>жива група на тиждень</li></ul>'
+    o.append(f'''<section class="ed-fmt"><div class="wrap ed-fmt-in"><div><h2 class="ed-h light">Формат</h2>
+<p>{fmt or "Лекції в записі, вправи, техніки та живі групові зустрічі для глибокої зміни мислення та взаємної підтримки. Робота на базі глибинної психології."}</p></div>
+{kpis}{guests}</div></section>''')
+    # 9. Social proof right before the decision: three voices
+    tc = "".join(f'<figure class="ed-t"><blockquote>{TESTI[k]}</blockquote></figure>' for k in "dae")
+    o.append(f'<section class="ed-rev" id="vidguky"><div class="wrap"><h2 class="ed-h">Відгуки учасниць</h2><div class="ed-rev-in">{tc}</div></div></section>')
+    # 10. Decision: closing words + price + one action
+    cl = "".join(f"<p>{p}</p>" for p in (s.get("closing") or []))
+    o.append(f'''<section class="ed-buy" id="vartist" style="background-image:url('{img(CLOSE_BG)}')"><div class="wrap ed-buy-in">
+<div class="ed-close">{cl or "<p>Запрошую вас у простір жіночої підтримки та натхнення, щоб створити свій авторський шедевр!</p>"}</div>
+<div class="ed-card"><p class="ed-k">Ціна за сезон</p><p class="ed-price">200$</p><p class="ed-soft">Можливе розтермінування</p>
+<ul><li>8 тижнів занурення в тему</li><li>Доступ до записів лекцій та вправ</li><li>Підтримуюча група в Телеграм каналі</li><li>Живі групи з автором</li></ul>
+{cta(card)}<p class="ed-soft small">Кількість місць обмежена для збереження камерної атмосфери</p>
+<a class="ed-mgr" href="https://t.me/pnm_a" target="_blank" rel="noopener">Є питання? Напишіть менеджеру</a></div></div></section>''')
+    return o
