@@ -54,19 +54,19 @@ def build():
     rows = [("01", "тіло та здоровʼя"), ("02", "гроші, реалізація та особистий потенціал"),
             ("03", "лідерство та управління командою"), ("04", "сімʼя. стосунки між батьками та дітьми"),
             ("05", "любов та стосунки у парі")]
-    ch = [T(441, 109, 559, "Я ПРАЦЮЮ ІЗ ЗАПИТАМИ<br>НА ЗМІНИ У ТАКИХ СФЕРАХ:", "F", 48, 48, "#000", "center", cls="h2", tag="h2", extra="margin:0;")]
+    ch = [T(441, 109, 559, "Я ПРАЦЮЮ ІЗ ЗАПИТАМИ<br>НА ЗМІНИ У ТАКИХ СФЕРАХ:", "F", 44, 50, OLIVE, "center", cls="h2", tag="h2", extra="margin:0;")]
     for i, (n, t) in enumerate(rows):
-        ch.append(G(630, 246 + i * 42, 570, 42, [
-            T(1, 7, 60, n, "F", 25, 28, "#000", cls="p"),
-            T(102, 7, 460, t, "F", 25, 28, "#000", cls="p"),
-        ], cls="row", extra="border-bottom:1px solid #000;"))
-    secs.append(SEC(560, ch, bg="#fff", id="sfery"))
+        ch.append(G(630, 246 + i * 52, 570, 52, [
+            T(1, 15, 60, n, "F", 17, 24, "rgba(89,95,69,.6)", cls="p", extra="letter-spacing:.1em"),
+            T(102, 11, 460, t, "C", 24, 30, "#2c2f22", cls="p", weight=500),
+        ], cls="row", extra="border-bottom:1px solid rgba(89,95,69,.3);"))
+    secs.append(SEC(600, ch, bg="#fff", id="sfery"))
     # Mission grid
     secs.append(SEC(830, [
         I(188, 40, 221, 224, "2/694e7f3bc2c73c4433f45bca_optimized.webp"),
         I(536, 40, 221, 224, "2/694e7f3edc0acba3c58c1825_optimized.webp"),
         I(883, 297, 221, 224, "2/694e7fc8080a9d0140ffdf80_optimized.webp", cls="keep"),
-        T(281, 355, 440, "Моє завдання — допомогти вам звільнитися від внутрішніх обмежень і побудувати якісне життя у відповідності до вашого <i style=\"font-size:1.3em;color:#595f45;font-weight:600\">справжнього Я!</i>", "C", 24, 32, "#000", "left", cls="p", **P),
+        T(281, 355, 440, "Моє завдання — допомогти вам звільнитися від внутрішніх обмежень і побудувати якісне життя у відповідності до вашого <i style=\"font-size:1.3em;color:#595f45;font-weight:600\">справжнього Я!</i>", "C", 24, 34, "#2c2f22", "left", cls="p", **P),
         I(188, 552, 221, 224, "2/694e7fe8dc4fd58c318ee1e6_optimized_572_c572x1024-0x0.webp"),
         I(536, 552, 221, 224, "2/694e7fe9c2c73c4433f45e1d_optimized_572_c572x1024-0x0.webp"),
     ], bgimg="2/6945cfbf364911d845d9da3b_optimized_2560.webp", cls="m-grid"))
@@ -74,7 +74,7 @@ def build():
     cards = [(120, "6947ff97364911d845de49e9_optimized_921.webp", "індивідуальна<br>терапія", 609),
              (520, "694e852edc4fd58c318ef385_optimized.webp", "психодинамічний<br>коучінг", 609),
              (920, "6948002c364911d845de4b73_optimized_921.webp", "групи", 641)]
-    ch = [T(120, 88, 1200, "ІНДИВІДУАЛЬНА РОБОТА ЗІ МНОЮ:", "F", 44, 48, OLIVE, "center", cls="h2", tag="h2", extra="margin:0;")]
+    ch = [T(120, 88, 1200, "ІНДИВІДУАЛЬНА РОБОТА ЗІ МНОЮ:", "F", 44, 50, OLIVE, "center", cls="h2", tag="h2", extra="margin:0;")]
     for x, f, t, ty in cards:
         ch.append(G(x, 151, 400, 609, [
             I(0, 0, 400, 609, "2/" + f, cls="keep"),
