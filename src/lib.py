@@ -1,7 +1,8 @@
 # Tiny generator for the kocherhina.com copy.
 # Desktop: absolute layout on a 1440px stage (coordinates captured from the original site).
 # Narrow screens: stage is zoomed to fit; phones (<760px) switch to a stacked flow layout.
-import html, os
+import html, os, time
+VER = str(int(time.time()))
 
 R1 = "https://res2.weblium.site/res/65ea13810e98e1000fe2502b/"
 R2 = "https://res2.weblium.site/res/6945bd72725a016acbb5e84d/"
@@ -119,11 +120,11 @@ def page(title, desc, body, active="", path=""):
 <meta name="theme-color" content="#595f45">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Forum&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v={VER}">
 </head><body>
 {header(active)}
 <main>{body}</main>
 {footer()}
 {modal()}
-<script src="site.js"></script>
+<script src="site.js?v={VER}"></script>
 </body></html>'''

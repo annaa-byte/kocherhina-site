@@ -8,6 +8,34 @@
   fit();
   window.addEventListener('resize', fit);
 
+  // ---- motion: reveal on scroll, hero lines, header shadow ----
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hdr = document.querySelector('.hdr');
+  addEventListener('scroll', function () { if (hdr) hdr.classList.toggle('scrolled', scrollY > 10); }, { passive: true });
+  var first = document.querySelector('main > section');
+  if (first && !reduce) {
+    first.querySelectorAll('.t.big').forEach(function (el, i) { el.classList.add('hero-line'); el.style.setProperty('--d', (0.15 + i * 0.18) + 's'); });
+  }
+  var heroImg = first && first.querySelector('img.keep');
+  if (heroImg && !reduce) heroImg.classList.add('float');
+  if ('IntersectionObserver' in window && !reduce) {
+    var targets = [];
+    document.querySelectorAll('main > section').forEach(function (sec, si) {
+      var items = sec.querySelectorAll('.stage > .a:not(.hero-line):not(.shape):not(.line):not(.srow), .srow > .a, .tcol > .tcard, .sp .wrap > *, .sp-weeks > *, .sp-want > li, .sp-ts > *, .sp-band, .ab-tx > *, .ab-ph, .ab2 p');
+      var n = 0;
+      items.forEach(function (el) {
+        if (el.classList.contains('float')) return;
+        el.classList.add('rv');
+        el.style.setProperty('--d', Math.min(n++ * 0.07, 0.5) + 's');
+        targets.push(el);
+      });
+    });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    targets.forEach(function (t) { io.observe(t); });
+  }
+
   // Close the mobile menu after a tap on a link.
   document.querySelectorAll('.hdr nav a').forEach(function (a) {
     a.addEventListener('click', function () { document.body.classList.remove('menu-open'); });
