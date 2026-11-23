@@ -152,7 +152,7 @@ SEASONS = [
     dict(n=2, y=433, h=231, title="Стосунки у парі:", small="Power Couple",
          desc="Як  побудувати союз із чоловіком<br>за принципом «Power Couple».",
          status="Сезон іде зараз, з 19 жовтня. Залиште заявку на повтор", kind="repeat",
-         img="1/69cf91c623efa9cc44611d23_optimized.webp", ir=(918, 445, 192, 206), page="season-2.html"),
+         img="L/power-couple.webp", ir=(918, 445, 192, 206), page="season-2.html"),
     dict(n=3, y=685, h=231, title="Гроші та реалізація:", small="",
          desc="Жіночі стратегії успіху без вигорання.<br>Стосунки з грошима. Грошові архетипи.",
          status="Старт запланований на березень 2027 року", kind="pay", pay="https://secure.wayforpay.com/button/bc93fb11f23a3",

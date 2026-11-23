@@ -11,7 +11,7 @@ LOCAL = os.environ.get("LOCAL_IMG") == "1"
 def img(name):
     """name like '1/69cf...webp' (R1) or '2/6945...webp' (R2)."""
     k, f = name.split("/", 1)
-    if LOCAL:
+    if k == "L" or LOCAL:  # L/: our own images, committed to img/
         return "img/" + f
     return (R1 if k == "1" else R2) + f
 

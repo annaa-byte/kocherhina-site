@@ -27,7 +27,7 @@ def testimonials(card_bg, dy=0, page_bg="#fff", head_color="#000"):
 SEASON_CARDS = [
     # n, title, status line, image, page
     (1, "Стосунки з собою", "Повтор сезону завершено", "1/69cf907e02d98a0e80c32e0c_optimized.webp", "season-1.html"),
-    (2, "Стосунки у парі", "Іде зараз · з 19 жовтня", "1/69cf91c623efa9cc44611d23_optimized.webp", "season-2.html"),
+    (2, "Стосунки у парі", "Іде зараз · з 19 жовтня", "L/power-couple.webp", "season-2.html"),
     (3, "Гроші та реалізація", "Старт у березні 2027", "1/69cf92ec378263656007dff2_optimized.webp", "season-3.html"),
     (4, "Тіло та здоров'я", "Старт у червні 2027", "1/69cf927ceecd0ca27089a758_optimized.webp", "season-4.html"),
     (5, "Імідж та краса", "Старт у вересні 2027", "1/69cf93237ed93e76919e3406_optimized.webp", "season-5.html"),
