@@ -11,7 +11,26 @@
   // ---- motion: reveal on scroll, hero lines, header shadow ----
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var hdr = document.querySelector('.hdr');
-  addEventListener('scroll', function () { if (hdr) hdr.classList.toggle('scrolled', scrollY > 10); }, { passive: true });
+  // The header takes the colour of the block right under it, so it never sits as a grey strip on top of the page
+  function tint() {
+    if (!hdr) return;
+    hdr.classList.toggle('scrolled', scrollY > 10);
+    if (document.body.classList.contains('menu-open')) return;
+    var y = hdr.offsetHeight + 2, el = document.elementFromPoint(innerWidth / 2, y), bg = '';
+    while (el && el !== document.documentElement) {
+      var c = getComputedStyle(el).backgroundColor;
+      if (c && c !== 'transparent' && !/rgba\(.*,\s*0\)$/.test(c)) { bg = c; break; }
+      if (el.tagName === 'SECTION' && getComputedStyle(el).backgroundImage !== 'none') break;
+      el = el.parentElement;
+    }
+    var m = (bg || 'rgb(255,250,241)').match(/[\d.]+/g).map(Number);
+    hdr.style.setProperty('--hbg', 'rgba(' + m[0] + ',' + m[1] + ',' + m[2] + ',.95)');
+    hdr.classList.toggle('dark', (0.299 * m[0] + 0.587 * m[1] + 0.114 * m[2]) < 140);
+  }
+  addEventListener('scroll', tint, { passive: true });
+  addEventListener('resize', tint);
+  addEventListener('load', tint);
+  tint();
   var first = document.querySelector('main > section');
   if (first && !reduce) {
     first.querySelectorAll('.t.big').forEach(function (el, i) { el.classList.add('hero-line'); el.style.setProperty('--d', (0.15 + i * 0.18) + 's'); });

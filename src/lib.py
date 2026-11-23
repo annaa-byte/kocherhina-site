@@ -81,11 +81,7 @@ def footer():
     """The last page of the book: an author's signature, the salon ornament, everything one tap away."""
     orn = img("1/69cf74dc7ed93e76919db552_optimized.webp")
     ornf = img("1/69cf74dc7ed93e76919db552_optimized_670_flop.webp")
-    return f'''<footer class="ftr"><img class="f-orn l" src="{orn}" alt="" loading="lazy"><img class="f-orn r" src="{ornf}" alt="" loading="lazy">
-<div class="f-top"><span class="f-mark">НК</span>
-<p class="f-sign">Наталя Кочергіна</p>
-<p class="f-role">Психоаналітичний психотерапевт · груповий терапевт · психодинамічний коуч</p>
-<a class="f-cta" href="https://t.me/Kocher_Nataly" target="_blank" rel="noopener">Написати в Telegram</a></div>
+    return f'''<footer class="ftr">
 <div class="fin">
 <div class="fcol"><h3>Сторінки</h3><a href="about.html">Про мене</a><a href="index.html#poslugy">Послуги</a><a href="index.html#vidguky">Відгуки</a></div>
 <div class="fcol"><h3>Свобода бути жінкою</h3><a href="svoboda-buty-zhinkoyu.html">Про проєкт</a><a href="season-1.html">Сезон 1 · Стосунки з собою</a><a href="season-2.html">Сезон 2 · Power Couple</a></div>

@@ -42,7 +42,7 @@ def build():
         T(482, 182, 481, "ВІТАЮ ВАС", "C", 90, 90, "#000", "right", cls="big", tag="h1", extra="margin:0;"),
         T(517, 246, 446, "У СВОЄМУ", "C", 90, 90, "#000", "right", cls="big"),
         T(515, 310, 448, "ПРОСТОРІ", "C", 90, 90, "#000", "right", cls="big"),
-    ], bg="#fff", cls="m-hero").replace("--h:600px", "--h:480px"))
+    ], bg=CREAM, cls="m-hero").replace("--h:600px", "--h:480px"))
     # About: portrait in the salon's arch, words beside it — one person, one promise, one link
     secs.append(f'''<section class="hm-about"><div class="wrap hm-about-in">
 <figure class="hm-portrait"><img src="{img("2/694e7e27080a9d0140ffdb16_optimized_930.webp")}" alt="Наталя Кочергіна" loading="lazy"></figure>
@@ -60,7 +60,7 @@ def build():
             T(1, 15, 60, n, "F", 17, 24, "rgba(89,95,69,.6)", cls="p", extra="letter-spacing:.1em"),
             T(102, 11, 460, t, "C", 24, 30, "#2c2f22", cls="p", weight=500),
         ], cls="row", extra="border-bottom:1px solid rgba(89,95,69,.3);"))
-    secs.append(SEC(600, ch, bg="#fff", id="sfery"))
+    secs.append(SEC(600, ch, bg=CREAM, id="sfery"))
     # Mission grid
     secs.append(SEC(830, [
         I(188, 40, 221, 224, "2/694e7f3bc2c73c4433f45bca_optimized.webp"),
