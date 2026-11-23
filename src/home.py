@@ -90,16 +90,16 @@ def build():
     # the five seasons as beige cards underneath.
     C2 = "#fffaf1"; BEIGE = "#fff5e7"
     ch = [
-        I(70, 110, 375, 540, "1/69cf74dc7ed93e76919db552_optimized.webp", extra="opacity:.9"),
+        I(-30, 110, 375, 540, "1/69cf74dc7ed93e76919db552_optimized.webp", extra="opacity:.9"),
         S(972, 128, 366, 516, "", f"1px solid rgba(255,250,241,.55)", extra="border-radius:183px 183px 0 0;"),
         I(990, 146, 330, 480, "1/69dd1850e56bc464c74e3faa_optimized_978_c978x1326-0x0.webp", cls="keep",
           extra="border-radius:165px 165px 0 0;object-position:40% 50%;"),
-        T(420, 150, 600, "ПРОДУКТИ · психологічний салон", "F", 20, 24, C2, "center", cls="p", extra="opacity:.75;letter-spacing:.04em"),
-        T(420, 196, 600, '<a href="svoboda-buty-zhinkoyu.html" style="text-decoration:none">СВОБОДА</a>', "C", 86, 86, C2, "center", cls="big", tag="h2", extra="margin:0;"),
-        T(420, 276, 600, '<a href="svoboda-buty-zhinkoyu.html" style="text-decoration:none">БУТИ ЖІНКОЮ</a>', "C", 86, 86, C2, "center", italic=True, cls="big"),
-        T(450, 400, 540, "Це трансформаційний жіночий онлайн-простір, де ми повертаємося до своєї  цілісності, звільняємось від очікувань інших  та навʼязаних ролей, знаходимо ресурс та підтримку одна в одній, і будуємо життя за власним сценарієм.", "C", 21, 30, C2, "center", cls="p", **P),
-        T(420, 556, 600, "5 сезонів · 8 тижнів кожен · лекції, вправи та живі групи", "F", 18, 22, C2, "center", cls="p", extra="opacity:.75"),
-        BTN(614, 600, 212, 50, "ПРО ПРОЄКТ", "svoboda-buty-zhinkoyu.html", "fill", C2, "#595f45", 17, "C", 25),
+        T(330, 150, 600, "ПРОДУКТИ · психологічний салон", "F", 20, 24, C2, "center", cls="p", extra="opacity:.75;letter-spacing:.04em"),
+        T(330, 196, 600, '<a href="svoboda-buty-zhinkoyu.html" style="text-decoration:none">СВОБОДА</a>', "C", 86, 86, C2, "center", cls="big", tag="h2", extra="margin:0;"),
+        T(330, 276, 600, '<a href="svoboda-buty-zhinkoyu.html" style="text-decoration:none">БУТИ ЖІНКОЮ</a>', "C", 86, 86, C2, "center", italic=True, cls="big"),
+        T(360, 400, 540, "Це трансформаційний жіночий онлайн-простір, де ми повертаємося до своєї  цілісності, звільняємось від очікувань інших  та навʼязаних ролей, знаходимо ресурс та підтримку одна в одній, і будуємо життя за власним сценарієм.", "C", 21, 30, C2, "center", cls="p", **P),
+        T(330, 556, 600, "5 сезонів · 8 тижнів кожен · лекції, вправи та живі групи", "F", 18, 22, C2, "center", cls="p", extra="opacity:.75"),
+        BTN(524, 600, 212, 50, "ПРО ПРОЄКТ", "svoboda-buty-zhinkoyu.html", "fill", C2, "#595f45", 17, "C", 25),
         T(120, 726, 600, "ТЕМИ СЕЗОНІВ", "F", 28, 32, C2, "left", cls="h2"),
         T(820, 732, 500, '<a href="svoboda-buty-zhinkoyu.html#temy" style="color:#fffaf1">усі сезони →</a>', "F", 20, 24, C2, "right", cls="p mob-hide"),
     ]
