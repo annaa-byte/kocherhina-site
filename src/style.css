@@ -316,7 +316,7 @@ img.a{object-fit:cover}
 .ed-guests p{margin:0;font-family:var(--corm);font-weight:500;font-size:22px;line-height:1.5;max-width:640px}
 .ed-rev{background:var(--cream);padding:130px 0}
 .ed-rev{background:#fff5e7;text-align:center}
-.ed-rev{padding:100px 0}.ed-rev .ed-k{margin-bottom:28px}
+.ed-rev{padding:140px 0}.ed-rev .ed-k{margin-bottom:28px}
 .ed-car{max-width:760px;margin:0 auto;position:relative}
 .ed-car::before{content:"“";display:block;font-family:var(--corm);font-size:96px;line-height:.6;height:40px;color:rgba(89,95,69,.3)}
 .ed-slides{display:grid}
@@ -388,7 +388,7 @@ img.rv.in{transform:none}
 .tcard:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.07)}
 
 /* ---- home, art-directed ---- */
-.hm-about{background:#fff;padding:40px 0 120px}
+.hm-about{background:#fff;padding:60px 0 80px}
 .hm-about-in{display:grid;grid-template-columns:420px 1fr;gap:110px;align-items:center;max-width:1100px}
 .hm-portrait{margin:0;position:relative;padding:16px}
 .hm-portrait::before{content:"";position:absolute;inset:0;border:1px solid rgba(89,95,69,.4);border-radius:210px 210px 0 0}
@@ -407,7 +407,7 @@ img.rv.in{transform:none}
 .hm-spheres li:hover{transform:translateY(-4px);box-shadow:0 18px 40px -24px rgba(60,64,45,.45)}
 .hm-spheres span{display:block;font-family:var(--corm);font-style:italic;font-size:40px;line-height:1;color:rgba(89,95,69,.45);margin-bottom:22px}
 .hm-spheres p{margin:0;font-family:var(--corm);font-weight:500;font-size:21px;line-height:1.35;color:#2c2f22}
-.hm-cta{background:#fff;padding:90px 0;overflow:hidden}
+.hm-cta{background:#fff;padding:140px 0 150px;overflow:hidden}
 .hm-cta-in{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px}
 .hm-fl{width:100%;max-width:400px;justify-self:end}.hm-fl.r{justify-self:start}
 .hm-cta-tx{text-align:center;max-width:460px}

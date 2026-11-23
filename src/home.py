@@ -50,13 +50,26 @@ def build():
 <p class="hm-role">Я психотерапевт та психодинамічний коуч із практикою понад 10 років</p>
 <p class="hm-body">Мій метод — це тонка робота з особистістю, де поєднуються психоаналіз, коучинг і системне бачення. Я спираюся на повагу до індивідуальності і впевнена, що в кожній людині є прихований потенціал для змін.</p>
 <a class="hm-link" href="about.html">Детальніше про мене <span>→</span></a></div></div></section>''')
-    # Why + with what: the mission as one sentence, then the five spheres as a calm row
-    rows = ["Тіло та здоровʼя", "Гроші, реалізація та особистий потенціал", "Лідерство та управління командою",
-            "Сімʼя. Стосунки між батьками та дітьми", "Любов та стосунки у парі"]
-    items = "".join(f"<li><span>{i+1:02d}</span><p>{t}</p></li>" for i, t in enumerate(rows))
-    secs.append(f'''<section class="hm-why" id="sfery"><div class="wrap">
-<p class="hm-mission">Моє завдання — допомогти вам звільнитися від внутрішніх обмежень і побудувати якісне життя у відповідності до вашого <i>справжнього Я!</i></p>
-<h2 class="hm-h">Я працюю із запитами на зміни у таких сферах:</h2><ol class="hm-spheres">{items}</ol></div></section>''')
+    # Spheres
+    rows = [("01", "тіло та здоровʼя"), ("02", "гроші, реалізація та особистий потенціал"),
+            ("03", "лідерство та управління командою"), ("04", "сімʼя. стосунки між батьками та дітьми"),
+            ("05", "любов та стосунки у парі")]
+    ch = [T(441, 109, 559, "Я ПРАЦЮЮ ІЗ ЗАПИТАМИ<br>НА ЗМІНИ У ТАКИХ СФЕРАХ:", "F", 48, 48, "#000", "center", cls="h2", tag="h2", extra="margin:0;")]
+    for i, (n, t) in enumerate(rows):
+        ch.append(G(630, 246 + i * 42, 570, 42, [
+            T(1, 7, 60, n, "F", 25, 28, "#000", cls="p"),
+            T(102, 7, 460, t, "F", 25, 28, "#000", cls="p"),
+        ], cls="row", extra="border-bottom:1px solid #000;"))
+    secs.append(SEC(560, ch, bg="#fff", id="sfery"))
+    # Mission grid
+    secs.append(SEC(830, [
+        I(188, 40, 221, 224, "2/694e7f3bc2c73c4433f45bca_optimized.webp"),
+        I(536, 40, 221, 224, "2/694e7f3edc0acba3c58c1825_optimized.webp"),
+        I(883, 297, 221, 224, "2/694e7fc8080a9d0140ffdf80_optimized.webp", cls="keep"),
+        T(281, 355, 440, "Моє завдання — допомогти вам звільнитися від внутрішніх обмежень і побудувати якісне життя у відповідності до вашого справжнього Я!", "C", 24, 32, "#000", "left", cls="p", **P),
+        I(188, 552, 221, 224, "2/694e7fe8dc4fd58c318ee1e6_optimized_572_c572x1024-0x0.webp"),
+        I(536, 552, 221, 224, "2/694e7fe9c2c73c4433f45e1d_optimized_572_c572x1024-0x0.webp"),
+    ], bgimg="2/6945cfbf364911d845d9da3b_optimized_2560.webp", cls="m-grid"))
     # Services: white titles now sit on a soft shade, so they read on any photo
     cards = [(120, "6947ff97364911d845de49e9_optimized_921.webp", "індивідуальна<br>терапія", 609),
              (520, "694e852edc4fd58c318ef385_optimized.webp", "психодинамічний<br>коучінг", 609),
