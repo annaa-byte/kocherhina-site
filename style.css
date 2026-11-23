@@ -263,7 +263,7 @@ img.a{object-fit:cover}
 .ed-story{background:var(--cream);padding:0 0 130px}
 .ed-story-in{display:grid;grid-template-columns:minmax(0,600px) 1fr;gap:100px;align-items:start}
 .ed-art{position:sticky;top:110px}
-.ed-art.framed{aspect-ratio:625/854;max-height:640px;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.ed-art.framed{aspect-ratio:625/854;width:340px;justify-self:center;top:140px;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
 .ed-art.framed img{width:100%;height:100%;max-height:none;object-fit:cover;object-position:50% 40%}
 .ed-text p{font-family:var(--corm);font-weight:500;font-size:22px;line-height:1.65;color:#2c2f22;margin:0 0 22px}
 .ed-text p:first-child::first-letter{font-family:var(--forum);font-size:64px;line-height:.8;float:left;margin:8px 10px 0 0;color:var(--olive)}
