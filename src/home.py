@@ -42,41 +42,26 @@ def build():
         T(482, 182, 481, "ВІТАЮ ВАС", "C", 90, 90, "#000", "right", cls="big", tag="h1", extra="margin:0;"),
         T(517, 246, 446, "У СВОЄМУ", "C", 90, 90, "#000", "right", cls="big"),
         T(515, 310, 448, "ПРОСТОРІ", "C", 90, 90, "#000", "right", cls="big"),
-    ], bg="#fff", cls="m-hero"))
-    # About (lifted 80px: the original had a dead gap under the hero)
-    secs.append(SEC(640, [
-        T(368, 122, 300, "Наталя Кочергіна", "C", 40, 52, "#000", "left", cls="h2"),
-        T(340, 172, 346, "Я психотерапевт та психодинамічний<br>коуч із практикою понад 10 років", "C", 20, 24, "#757575", "center", 600, cls="p"),
-        LINE(434, 246, 158, "#000"),
-        T(262, 282, 501, "Мій метод — це тонка робота з особистістю, де поєднуються психоаналіз, коучинг і системне бачення. Я спираюся на повагу до індивідуальності і впевнена, що в кожній людині є прихований потенціал для змін.", "C", 21, 30, "#000", "center", cls="p", **P),
-        BTN(434, 462, 158, 40, "ПРО МЕНЕ", "about.html", "line", "#000", "#000", 15),
-        I(937, 0, 383, 575, "2/694e7e27080a9d0140ffdb16_optimized_930.webp", cls="keep", alt="Наталя Кочергіна"),
-    ], bg="#fff", cls="m-about"))
-    # Spheres
-    rows = [("01", "тіло та здоровʼя"), ("02", "гроші, реалізація та особистий потенціал"),
-            ("03", "лідерство та управління командою"), ("04", "сімʼя. стосунки між батьками та дітьми"),
-            ("05", "любов та стосунки у парі")]
-    ch = [T(441, 29, 559, "Я ПРАЦЮЮ ІЗ ЗАПИТАМИ<br>НА ЗМІНИ У ТАКИХ СФЕРАХ:", "F", 48, 48, "#000", "center", cls="h2", tag="h2", extra="margin:0;")]
-    for i, (n, t) in enumerate(rows):
-        ch.append(G(630, 166 + i * 42, 570, 42, [
-            T(1, 7, 60, n, "F", 25, 28, "#000", cls="p"),
-            T(102, 7, 460, t, "F", 25, 28, "#000", cls="p"),
-        ], cls="row", extra="border-bottom:1px solid #000;"))
-    secs.append(SEC(420, ch, bg="#fff", id="sfery"))
-    # Mission grid
-    secs.append(SEC(830, [
-        I(188, 40, 221, 224, "2/694e7f3bc2c73c4433f45bca_optimized.webp"),
-        I(536, 40, 221, 224, "2/694e7f3edc0acba3c58c1825_optimized.webp"),
-        I(883, 297, 221, 224, "2/694e7fc8080a9d0140ffdf80_optimized.webp", cls="keep"),
-        T(281, 355, 440, "Моє завдання — допомогти вам звільнитися від внутрішніх обмежень і побудувати якісне життя у відповідності до вашого справжнього Я!", "C", 24, 32, "#000", "left", cls="p", **P),
-        I(188, 552, 221, 224, "2/694e7fe8dc4fd58c318ee1e6_optimized_572_c572x1024-0x0.webp"),
-        I(536, 552, 221, 224, "2/694e7fe9c2c73c4433f45e1d_optimized_572_c572x1024-0x0.webp"),
-    ], bgimg="2/6945cfbf364911d845d9da3b_optimized_2560.webp", cls="m-grid"))
+    ], bg="#fff", cls="m-hero").replace("--h:600px", "--h:480px"))
+    # About: portrait in the salon's arch, words beside it — one person, one promise, one link
+    secs.append(f'''<section class="hm-about"><div class="wrap hm-about-in">
+<figure class="hm-portrait"><img src="{img("2/694e7e27080a9d0140ffdb16_optimized_930.webp")}" alt="Наталя Кочергіна" loading="lazy"></figure>
+<div class="hm-about-tx"><p class="ed-k">Про мене</p><h2>Наталя Кочергіна</h2>
+<p class="hm-role">Я психотерапевт та психодинамічний коуч із практикою понад 10 років</p>
+<p class="hm-body">Мій метод — це тонка робота з особистістю, де поєднуються психоаналіз, коучинг і системне бачення. Я спираюся на повагу до індивідуальності і впевнена, що в кожній людині є прихований потенціал для змін.</p>
+<a class="hm-link" href="about.html">Детальніше про мене <span>→</span></a></div></div></section>''')
+    # Why + with what: the mission as one sentence, then the five spheres as a calm row
+    rows = ["Тіло та здоровʼя", "Гроші, реалізація та особистий потенціал", "Лідерство та управління командою",
+            "Сімʼя. Стосунки між батьками та дітьми", "Любов та стосунки у парі"]
+    items = "".join(f"<li><span>{i+1:02d}</span><p>{t}</p></li>" for i, t in enumerate(rows))
+    secs.append(f'''<section class="hm-why" id="sfery"><div class="wrap">
+<p class="hm-mission">Моє завдання — допомогти вам звільнитися від внутрішніх обмежень і побудувати якісне життя у відповідності до вашого <i>справжнього Я!</i></p>
+<h2 class="hm-h">Я працюю із запитами на зміни у таких сферах:</h2><ol class="hm-spheres">{items}</ol></div></section>''')
     # Services: white titles now sit on a soft shade, so they read on any photo
     cards = [(120, "6947ff97364911d845de49e9_optimized_921.webp", "індивідуальна<br>терапія", 609),
              (520, "694e852edc4fd58c318ef385_optimized.webp", "психодинамічний<br>коучінг", 609),
              (920, "6948002c364911d845de4b73_optimized_921.webp", "групи", 641)]
-    ch = [T(120, 88, 1200, "ІНДИВІДУАЛЬНА РОБОТА ЗІ МНОЮ:", "F", 48, 48, "#000", "center", cls="h2", tag="h2", extra="margin:0;")]
+    ch = [T(120, 88, 1200, "ІНДИВІДУАЛЬНА РОБОТА ЗІ МНОЮ:", "F", 44, 48, OLIVE, "center", cls="h2", tag="h2", extra="margin:0;")]
     for x, f, t, ty in cards:
         ch.append(G(x, 151, 400, 609, [
             I(0, 0, 400, 609, "2/" + f, cls="keep"),
@@ -114,18 +99,18 @@ def build():
         ], bg=BEIGE, cls="scard"))
     ch.append('<div class="a srow" style="left:0;top:0;width:1440px;height:0">' + "".join(row) + '</div>')
     secs.append(SEC(1170, ch, bg=OLIVE, id="produkty", cls="m-prod"))
-    # Testimonials
-    secs.append(SEC(1480, testimonials("#f8f8f8", dy=20), bg="#fff", id="vidguky", cls="m-testi"))
-    # CTA
-    secs.append(SEC(500, [
-        I(120, -50, 470, 410, "2/694841a4c2caec12d4b177bd_optimized_1220.webp"),
-        S(415, 79, 610, 362, "#fff"),
-        T(501, 148, 439, "ВИ ВЖЕ В ПОТРІБНОМУ МІСЦІ І В ПОТРІБНИЙ ЧАС.", "C", 28, 36.4, "#000", "center", cls="p"),
-        T(561, 257, 318, "ЗРОБІТЬ КРОК ДО ЗМІН!", "C", 28, 36.4, "#000", "center", cls="p"),
-        BTN(613, 348, 213, 50, "Подати заявку", TG_N, "fill", "#000", "#fff", 19, "C", 25, 'target="_blank" rel="noopener"', arrow=True),
-        I(891, 155, 452, 394, "2/694841a4c2caec12d4b177bd_optimized_1220_flop.webp"),
-        LINE(120, 488, 1200, "#000"),
-    ], bg="#fff", cls="m-cta"))
+    # Testimonials: one voice at a time (same pattern as the season pages)
+    keys = "bdacef"
+    slides = "".join(f'<blockquote class="ed-slide{" on" if i == 0 else ""}">{TESTI[k]}</blockquote>' for i, k in enumerate(keys))
+    secs.append(f'''<section class="ed-rev" id="vidguky"><div class="wrap"><p class="ed-k">Відгуки</p>
+<div class="ed-car" data-car><div class="ed-slides">{slides}</div>
+<div class="ed-ctl"><button type="button" data-prev aria-label="Попередній відгук">←</button><span class="ed-cnt"><b>01</b> / {len(keys):02d}</span><button type="button" data-next aria-label="Наступний відгук">→</button></div></div></div></section>''')
+    # Closing call: the two flowers frame one sentence and one button
+    secs.append(f'''<section class="hm-cta"><div class="wrap hm-cta-in">
+<img class="hm-fl" src="{img("2/694841a4c2caec12d4b177bd_optimized_1220.webp")}" alt="" loading="lazy">
+<div class="hm-cta-tx"><p>Ви вже в потрібному місці і в потрібний час.</p><p class="it">Зробіть крок до змін!</p>
+<a class="hm-btn" href="{TG_N}" target="_blank" rel="noopener">Подати заявку</a></div>
+<img class="hm-fl r" src="{img("2/694841a4c2caec12d4b177bd_optimized_1220_flop.webp")}" alt="" loading="lazy"></div></section>''')
     body = "".join(secs)
     return page("Наталя Кочергіна — психотерапевт і психодинамічний коуч",
                 "Психоаналітичний психотерапевт і психодинамічний коуч Наталя Кочергіна: індивідуальна терапія, коучинг, групи та жіночий проєкт «Свобода бути жінкою».",

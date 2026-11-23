@@ -21,7 +21,7 @@
   if ('IntersectionObserver' in window && !reduce) {
     var targets = [];
     document.querySelectorAll('main > section').forEach(function (sec, si) {
-      var items = sec.querySelectorAll('.stage > .a:not(.hero-line):not(.shape):not(.line):not(.srow), .srow > .a, .tcol > .tcard, .sp .wrap > *, .sp-weeks > *, .sp-want > li, .sp-ts > *, .sp-band, .ed-facts dl > div, .ed-hook .wrap > *, .ed-text > p, .ed-art, .ed-promise p, .ed-for-art, .ed-h, .ed-list li, .ed-grid li, .ed-acc details, .ed-steps li, .ed-car, .ed-author, .ed-sign, .ed-close, .ed-card, .ab-tx > *, .ab-ph, .ab2 p');
+      var items = sec.querySelectorAll('.stage > .a:not(.hero-line):not(.shape):not(.line):not(.srow), .srow > .a, .tcol > .tcard, .sp .wrap > *, .sp-weeks > *, .sp-want > li, .sp-ts > *, .sp-band, .ed-facts dl > div, .ed-hook .wrap > *, .ed-text > p, .ed-art, .ed-promise p, .ed-for-art, .ed-h, .ed-list li, .ed-grid li, .ed-acc details, .ed-steps li, .ed-car, .ed-author, .ed-sign, .ed-close, .ed-card, .ab-tx > *, .ab-ph, .ab2 p, .hm-portrait, .hm-about-tx > *, .hm-mission, .hm-h, .hm-spheres li, .hm-cta-tx > *, .hm-fl');
       var n = 0;
       items.forEach(function (el) {
         if (el.classList.contains('float')) return;
