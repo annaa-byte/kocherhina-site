@@ -525,3 +525,15 @@ img.rv.in{transform:none}
 .ed-rev.ink .ed-cnt b,.ed-rev.ink .ed-ctl button{color:#000}
 .ed-rev.ink .ed-ctl button{border-color:rgba(0,0,0,.3)}
 .ed-rev.ink .ed-ctl button:hover{background:#000;color:#fdfbf7}
+
+/* Project page: book-style block on warm white with black type */
+.ed-story.sbz-book{background:var(--warm);padding:120px 0 110px}
+.ed-story.ink .ed-text p{color:#000}
+.ed-story.ink .ed-text p:first-child::first-letter{color:#000}
+.ed-story.ink .ed-text p.ed-pull{color:#000;border-left-color:#000}
+.sbz-book .ed-story-in{align-items:center}
+@media (max-width:759px){.ed-story.sbz-book{padding:64px 0 56px}}
+.sbz-book .ed-text p{font-size:27px;line-height:1.6}
+.sbz-book .ed-text p:first-child::first-letter{font-size:78px}
+.sbz-book .ed-text p.ed-pull{font-size:32px}
+@media (max-width:759px){.sbz-book .ed-text p{font-size:21px}.sbz-book .ed-text p.ed-pull{font-size:24px}}

@@ -37,12 +37,11 @@ def build():
         BTN(120, 478, 190, 52, "ПРОГРАМА", "#temy", "line", "#000", "#000", 17, "C", 26),
         BTN(330, 478, 210, 52, "ВЗЯТИ УЧАСТЬ", "#vartist", "fill", OLIVE, W, 17, "C", 26),
     ], bg=W, cls="m-sbzh"))
-    # B3 mothers
-    secs.append(LIGHT + SEC(466, [
-        T(207, 82, 560, "Наші мами передали нам свої жіночі стратегії:<br>бути «зручними», терплячими, чимось поступатись або «тягнути все на собі».", "F", 28, 33.6, OLIVE, "left", cls="p", extra="max-width:540px"),
-        T(207, 216, 520, "Але світ змінився, тепер ми маємо вибір<br>і хочемо жити по іншому.", "F", 28, 33.6, OLIVE, "left", cls="p"),
-        I(743, 37, 588, 395, "1/69cf76daeecd0ca270892e11_optimized.webp", cls="keep"),
-    ], bg=CREAM))
+    # B3 mothers: set like a page of a book (as on the season pages), the turn of the thought pulled out
+    secs.append(f'''<section class="ed-story ink sbz-book"><div class="wrap ed-story-in"><div class="ed-text">
+<p>Наші мами передали нам свої жіночі стратегії: бути «зручними», терплячими, чимось поступатись або «тягнути все на собі».</p>
+<p class="ed-pull">Але світ змінився, тепер ми маємо вибір і хочемо жити по іншому.</p></div>
+<figure class="ed-art"><img src="{img("1/69cf76daeecd0ca270892e11_optimized.webp")}" alt="" loading="lazy"></figure></div></section>''')
     # B4 we want it all: the four wishes as a quiet 2x2 list on hairlines, no stickers or brackets
     wants = ["свої бажання та реалізацію без вигорання",
              "отримувати турботу від чоловіка і відчувати цінність в стосунках",
@@ -58,12 +57,10 @@ def build():
     secs.append(LIGHT + SEC(780, ch, bg=CREAM))
     # B6 about the project
     secs.append(LIGHT + SEC(800, [
-        I(411, 20, 619, 761, "1/69cf7efa7ed93e76919ddebb_optimized_1028.webp"),
-        S(-1, 114, 1442, 572, "#fff5e7"),
         T(520, 131, 400, "ПРО ПРОЄКТ", "F", 48, 48, OLIVE, "center", cls="h2", tag="h2", extra="margin:0;"),
         T(209, 209, 1022, "Це трансформаційний жіночий онлайн-простір, де ми повертаємося до своєї цілісності, звільняємось від очікувань інших та навʼязаних ролей, знаходимо ресурс та підтримку одна в одній, і будуємо життя за власним сценарієм.", "F", 28, 30.8, OLIVE, "center", cls="p"),
         I(537, 346, 367, 390, "1/69cf7fc623efa9cc4460cee1_optimized.webp", cls="keep"),
-    ], bg=OLIVE, id="pro-proekt", mbg="#fff5e7"))
+    ], bg="#fdfbf7", id="pro-proekt"))
     # B7 why salon / format / structure
     C = "#fffaf1"
     secs.append(SEC(550, [
