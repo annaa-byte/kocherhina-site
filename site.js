@@ -58,6 +58,14 @@
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') document.querySelectorAll('.svc-pop.open').forEach(function (m) { m.classList.remove('open'); }); });
 
+  // Accordions: opening one item closes the others in the same list
+  document.querySelectorAll('.svc-acc details, .ed-acc details').forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (!d.open) return;
+      d.parentElement.querySelectorAll(':scope > details[open]').forEach(function (o) { if (o !== d) o.open = false; });
+    });
+  });
+
   // Close the mobile menu after a tap on a link.
   document.querySelectorAll('.hdr nav a').forEach(function (a) {
     a.addEventListener('click', function () { document.body.classList.remove('menu-open'); });
