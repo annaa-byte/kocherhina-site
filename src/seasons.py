@@ -74,6 +74,8 @@ def editorial(s, card, n):
     if s.get("intro"):
         hl = {2: 1}.get(n)  # paragraph set apart like a highlighted passage in a book
         paras = "".join(f'<p class="ed-pull">{p}</p>' if i == hl else f"<p>{p}</p>" for i, p in enumerate(s["intro"]))
+        if n == 1:  # the heroine's own words, set off like a quoted line in a book
+            paras = paras.replace("«Я ніби в якийсь момент себе загубила»", '<em class="ed-em">«Я ніби в якийсь момент себе загубила»</em>')
         o.append(f'''<section class="ed-story"><div class="wrap ed-story-in"><div class="ed-text">{paras}</div>
 <figure class="ed-art"><img src="{img(COLLAGE)}" alt="" loading="lazy"></figure></div></section>''')
     # 4. The promise — one sentence on olive
