@@ -87,7 +87,7 @@ def editorial(s, card, n):
 <div><h2 class="ed-h">{ft}</h2><ol class="ed-list">{items}</ol></div></div></section>''')
     # 6. Outcomes — 2x2 with large italic numerals
     if s.get("outcomes"):
-        items = "".join(f"<li><span>{i+1}</span><p>{x}</p></li>" for i, x in enumerate(s["outcomes"]))
+        items = "".join(f"<li><span>{i+1}</span><p>{x[:1].upper() + x[1:]}</p></li>" for i, x in enumerate(s["outcomes"]))
         o.append(f'''<section class="ed-out"><div class="wrap"><h2 class="ed-h light">Що ви отримаєте</h2><ul class="ed-grid">{items}</ul></div></section>''')
     # 7. Program — accordion: titles at a glance, details on demand
     if s.get("program"):
@@ -102,7 +102,7 @@ def editorial(s, card, n):
     if ft:
         day = re.search(r"(Що\w+) — групова", ft)
         steps = [("8 лекцій", "з переглядом терапевтичного кіно"),
-                 (day.group(1) if day else "Щотижня", "групова зустріч у Zoom"),
+                 ("8 онлайн-зустрічей", "живі групи з авторкою"),
                  ("Вправи", "до кожної лекції, для саморефлексії"),
                  ("1 рік", "доступу до матеріалів")]
     else:
@@ -116,12 +116,11 @@ def editorial(s, card, n):
     o.append(f'''<section class="ed-fmt"><div class="wrap"><h2 class="ed-h light">Як проходить сезон</h2>
 <ol class="ed-steps">{cells}</ol>{guests}</div></section>''')
     # 9. Social proof: one voice at a time, large, with a gentle carousel
-    keys = "dabcef"
+    keys = "bdacef"
     slides = "".join(f'<blockquote class="ed-slide{" on" if i == 0 else ""}">{TESTI[k]}</blockquote>' for i, k in enumerate(keys))
     o.append(f'''<section class="ed-rev" id="vidguky"><div class="wrap"><p class="ed-k">Відгуки учасниць</p>
 <div class="ed-car" data-car><div class="ed-slides">{slides}</div>
 <div class="ed-ctl"><button type="button" data-prev aria-label="Попередній відгук">←</button><span class="ed-cnt"><b>01</b> / {len(keys):02d}</span><button type="button" data-next aria-label="Наступний відгук">→</button></div></div></div></section>''')
-    o.append(facts_html)
     # 10. Decision: closing words + price + one action
     cl = "".join(f"<p>{p}</p>" for p in (s.get("closing") or []))
     o.append(f'''<section class="ed-buy" id="vartist" style="background-image:url('{img(CLOSE_BG)}')"><div class="wrap ed-buy-in">
