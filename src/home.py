@@ -118,13 +118,14 @@ def build():
     ]
     row = []
     for i, (n, t, st_, im, href) in enumerate(SEASON_CARDS):
-        row.append(G(120 + i * 244, 780, 224, 300, [
-            I(37, 20, 150, 140, im, cls="keep", extra="object-fit:contain;"),
-            T(20, 172, 184, f"Сезон {n}", "F", 16, 18, "#595f45", "left", extra="opacity:.65"),
-            T(20, 194, 184, t, "F", 22, 25, "#595f45", "left", 700),
-            T(20, 252, 184, st_, "F", 16, 18, "#595f45", "left", extra="opacity:.85"),
+        row.append(G(120 + i * 244, 770, 224, 330, [
+            I(37, 44, 150, 136, im, cls="keep", extra="object-fit:contain;"),
+            T(12, 198, 200, f"СЕЗОН {n}", "F", 13, 16, "#595f45", "center", extra="opacity:.6;letter-spacing:.18em"),
+            T(12, 222, 200, t, "C", 25, 28, "#595f45", "center", 500, italic=True),
+            S(97, 272, 30, 1, "rgba(89,95,69,.35)"),
+            T(12, 284, 200, st_, "C", 16, 20, "#595f45", "center", 500, extra="opacity:.8"),
             f'<a class="a" href="{href}" style="inset:0" aria-label="Сезон {n}. {t}"></a>',
-        ], bg=BEIGE, cls="scard"))
+        ], bg=BEIGE, cls="scard", extra="border-radius:112px 112px 0 0;"))
     ch.append('<div class="a srow" style="left:0;top:0;width:1440px;height:0">' + "".join(row) + '</div>')
     secs.append(SEC(1170, ch, bg=OLIVE, id="produkty", cls="m-prod"))
     # Testimonials: one voice at a time (same pattern as the season pages)

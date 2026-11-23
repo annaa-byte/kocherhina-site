@@ -41,7 +41,9 @@ img.a{object-fit:cover}
 .tcard{margin:0;padding:26px 20px 24px;text-align:center;box-shadow:0 1px 0 rgba(0,0,0,.04)}
 .tcard img{display:block;margin:0 auto 12px}
 .tcard blockquote{margin:0;font-family:var(--corm);font-weight:600;font-size:19px;line-height:24px;color:#000;padding-bottom:18px;border-bottom:1px solid #000}
-.scard{transition:transform .25s ease, box-shadow .25s ease}
+.scard{transition:transform .35s ease, box-shadow .35s ease;outline:1px solid rgba(89,95,69,.28);outline-offset:-9px}
+.scard::after{content:"";position:absolute;inset:9px;border-radius:103px 103px 0 0;border:1px solid rgba(89,95,69,.28);pointer-events:none}
+.scard{outline:none}
 .scard:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(89,95,69,.25)}
 
 /* ---------- modal form ---------- */
@@ -148,10 +150,10 @@ img.a{object-fit:cover}
   .m-prod .stage > img.keep{order:-1;width:230px!important;height:320px!important;max-height:none;margin:0 auto 10px;border-radius:115px 115px 0 0}
   .m-prod .stage .t.big{font-size:46px!important}
   .m-prod .stage .srow{display:flex!important;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:20px;margin:6px -20px 0;padding:0 20px 8px;width:auto!important;-webkit-overflow-scrolling:touch}
-  .m-prod .srow .scard{flex:0 0 68%;scroll-snap-align:start;position:relative!important;padding:18px 16px!important;min-height:270px}
+  .m-prod .srow .scard{flex:0 0 68%;scroll-snap-align:start;position:relative!important;padding:40px 16px 22px!important;min-height:300px;text-align:center}
   .m-prod .srow .scard img.keep{width:100%!important;height:130px!important;object-fit:contain;max-height:none}
-  .m-prod .srow .scard .t{font-size:16px!important;line-height:1.3!important}
-  .m-prod .srow .scard .t[style*="font-size:22px"]{font-size:21px!important;line-height:1.15!important}
+  .m-prod .srow .scard .t{font-size:16px!important;line-height:1.3!important;text-align:center!important}
+  .m-prod .srow .scard .t[style*="font-size:25px"]{font-size:23px!important;line-height:1.15!important}.m-prod .srow .scard .shape{position:relative!important;left:auto!important;top:auto!important;margin:10px auto!important}
   .m-prod .srow .scard a.a{position:absolute!important;left:0!important;top:0!important;right:0;bottom:0;width:100%!important;height:100%!important}
   /* testimonials: one column of cards, no collage */
   .m-testi .stage .t.h2{text-align:left!important}
