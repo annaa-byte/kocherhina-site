@@ -76,8 +76,13 @@ def editorial(s, card, n):
         paras = "".join(f'<p class="ed-pull">{p}</p>' if i == hl else f"<p>{p}</p>" for i, p in enumerate(s["intro"]))
         if n == 1:  # the heroine's own words, set off like a quoted line in a book
             paras = paras.replace("«Я ніби в якийсь момент себе загубила»", '<em class="ed-em">«Я ніби в якийсь момент себе загубила»</em>')
+        if n == 2:  # Anna's painting, cut to the same ornate scalloped frame (the collage's silhouette is the mask)
+            story_art = (f'<figure class="ed-art framed" style="-webkit-mask-image:url(\'{img(COLLAGE)}\');mask-image:url(\'{img(COLLAGE)}\')">'
+                         f'<img src="{img("L/s2-story.webp")}" alt="" loading="lazy"></figure>')
+        else:
+            story_art = f'<figure class="ed-art"><img src="{img(COLLAGE)}" alt="" loading="lazy"></figure>'
         o.append(f'''<section class="ed-story"><div class="wrap ed-story-in"><div class="ed-text">{paras}</div>
-<figure class="ed-art"><img src="{img(COLLAGE)}" alt="" loading="lazy"></figure></div></section>''')
+{story_art}</div></section>''')
     # 4. The promise — one sentence on olive
     o.append(f'''<section class="ed-promise"><div class="wrap"><p>{s.get("pinned") or s["topic"]}</p>
 <div class="ed-sign"><figure class="ed-author"><img src="{img(AUTHOR)}" alt="Наталя Кочергіна" loading="lazy"></figure><div><b>Наталя Кочергіна</b><span>психоаналітичний психотерапевт, авторка проєкту «Свобода бути жінкою»</span></div></div></div></section>''')
