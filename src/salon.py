@@ -125,8 +125,8 @@ def build():
     secs.append(f'''<section class="ed-rev ink" id="vidguky"><div class="wrap"><p class="ed-k">Відгуки</p>
 <div class="ed-car" data-car><div class="ed-slides">{slides}</div>
 <div class="ed-ctl"><button type="button" data-prev aria-label="Попередній відгук">←</button><span class="ed-cnt"><b>01</b> / {len(keys):02d}</span><button type="button" data-next aria-label="Наступний відгук">→</button></div></div></div></section>''')
-    # B16 final CTA
-    secs.append(LIGHT + SEC(520, [
+    # B16 final CTA (hidden for now at Anna's request, 24.11)
+    _final_cta = (LIGHT + SEC(520, [
         I(-37, 10, 622, 466, "1/69cfa4e7eecd0ca27089f7c3_optimized_1304_flop.webp"),
         I(911, 100, 491, 391, "1/69cfa2feeecd0ca27089eec7_optimized_833_flop.webp"),
         G(415, 79, 610, 362, [
