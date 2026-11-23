@@ -55,12 +55,6 @@ def build():
                     extra="border-top:1px solid rgba(89,95,69,.35);"))
     ch.append(T(680, 570, 540, "Це стає можливим, коли ми злагоджені із собою і своїм внутрішнім центром.", "C", 28, 36, OLIVE, "left", 500, italic=True, cls="p"))
     secs.append(LIGHT + SEC(780, ch, bg=CREAM))
-    # B6 about the project
-    secs.append(LIGHT + SEC(800, [
-        T(520, 131, 400, "ПРО ПРОЄКТ", "F", 48, 48, OLIVE, "center", cls="h2", tag="h2", extra="margin:0;"),
-        T(209, 209, 1022, "Це трансформаційний жіночий онлайн-простір, де ми повертаємося до своєї цілісності, звільняємось від очікувань інших та навʼязаних ролей, знаходимо ресурс та підтримку одна в одній, і будуємо життя за власним сценарієм.", "F", 28, 30.8, OLIVE, "center", cls="p"),
-        I(537, 346, 367, 390, "1/69cf7fc623efa9cc4460cee1_optimized.webp", cls="keep"),
-    ], bg="#fdfbf7", id="pro-proekt"))
     # B7 why salon / format / structure
     C = "#fffaf1"
     secs.append(SEC(550, [
@@ -80,19 +74,12 @@ def build():
         LINE(720, 442, 600, C),
     ], bg=OLIVE))
     # B8 seasons (fixed: real pages, current statuses, apply-for-repeat)
-    secs.append(LIGHT + SEC(1583, seasons_block(), bg=CREAM, id="temy"))
-    # B9 guests + philosophy
-    secs.append(LIGHT + SEC(844, [
+    secs.append(LIGHT + SEC(1653, seasons_block(), bg=CREAM, id="temy"))
+    # B9 guests (the philosophy plaque is gone)
+    secs.append(LIGHT + SEC(300, [
         T(333, 1, 774, "До проекту будуть запрошені гості-експерти під запити учасниць.", "F", 28, 33.6, OLIVE, "center", cls="p"),
         I(437, 73, 550, 176, "1/69cf959e02d98a0e80c344b2_optimized.webp"),
-        S(302, 221, 836, 205, "#555b41"),
-        I(302, 161, 836, 89, "1/69cf95467ed93e76919e3d14_optimized_3491.webp"),
-        I(302, 397, 836, 89, "1/69cf95467ed93e76919e3d14_optimized_3491_flip.webp"),
-        I(455, 263, 514, 65, "1/69cf94ceeecd0ca27089b1ab_optimized.webp"),
-        T(455, 269, 514, "Філософія проекту:", "F", 48, 48, C, "center", cls="h2"),
-        T(482, 351, 476, "підтримуюче коло жінок без конкуренції", "F", 28, 33.6, C, "center", cls="p"),
-        I(487, 361, 450, 428, "1/69cf95e77ed93e76919e4019_optimized.webp"),
-    ], bg=CREAM, cls="philo", mbg="#555b41"))
+    ], bg=CREAM))
     # B10 price
     feats = ["8 тижнів занурення в тему", "Доступ до записів лекцій та вправ", "Підтримуюча група в Телеграм каналі", "Живі групи з автором"]
     fch = []
@@ -161,7 +148,7 @@ def build():
 
 SEASONS = [
     # y, card h, title, small, desc lines, status, status kind, image, img rect (x,y,w,h), page, pay
-    dict(n=1, y=207, h=205, title="Стосунки з собою", small="(повторення)",
+    dict(n=1, y=207, h=205, title="Стосунки з собою", small="",
          desc="Цінність, самооцінка, авторський сценарій життя.",
          status="Повтор сезону завершився. Залиште заявку на наступний потік", kind="repeat",
          img="1/69cf907e02d98a0e80c32e0c_optimized.webp", ir=(941, 213, 161, 192), page="season-1.html"),
@@ -187,22 +174,24 @@ def seasons_block():
     C = "#fffaf1"
     ch = [T(420, 71, 600, "ТЕМИ СЕЗОНІВ", "F", 48, 53, OLIVE, "center", cls="h2", tag="h2", extra="margin:0;"),
           I(545, 180, 350, 38, "1/69cf9218eecd0ca27089a59b_optimized.webp")]
-    for s in SEASONS:
-        x0, y0 = 302, s["y"]
-        ix, iy, iw, ih = s["ir"]
+    for k, s in enumerate(SEASONS):
+        sh = 14 * k  # each card grew by 14px for its "Сезон N" label
+        x0, y0, hh = 302, s["y"] + sh, s["h"] + 14
+        ix, iy, iw, ih = s["ir"]; iy += sh + 7
         t = f'{s["title"]} <span style="font-size:24px">{s["small"]}</span>' if s["small"] else s["title"]
         kids = [
-            T(60, 31, 560, f'<a href="{s["page"]}" style="text-decoration:none">{t}</a>', "F", 28, 33.6, C, "left", 700, cls="h2", tag="h3", extra="margin:0;"),
-            T(60, 71, 560, s["desc"], "F", 20, 20, C, "left", cls="p"),
-            T(60, s["h"] - 106, 560, s["status"], "F", 20, 22, "rgba(255,250,241,.75)", "left", cls="p"),
-            BTN(60, s["h"] - 65, 142, 35, "ДЕТАЛЬНІШЕ", s["page"], "line", C, C, 15),
+            T(60, 24, 560, f"СЕЗОН {s['n']}", "F", 13, 16, C, "left", cls="p skick", extra="letter-spacing:.22em;opacity:.6"),
+            T(60, 45, 560, f'<a href="{s["page"]}" style="text-decoration:none">{t}</a>', "F", 28, 33.6, C, "left", 700, cls="h2", tag="h3", extra="margin:0;"),
+            T(60, 85, 560, s["desc"], "F", 20, 20, C, "left", cls="p"),
+            T(60, hh - 106, 560, s["status"], "F", 20, 22, "rgba(255,250,241,.75)", "left", cls="p"),
+            BTN(60, hh - 65, 142, 35, "ДЕТАЛЬНІШЕ", s["page"], "line", C, C, 15),
         ]
         if s["kind"] == "repeat":
-            kids.append(BTN(222, s["h"] - 65, 220, 35, "ЗАЯВКА НА ПОВТОР", "#zayavka", "fill", C, OLIVE, 15, attrs=f'data-apply="{s["n"]}"'))
+            kids.append(BTN(222, hh - 65, 220, 35, "ЗАЯВКА НА ПОВТОР", "#zayavka", "fill", C, OLIVE, 15, attrs=f'data-apply="{s["n"]}"'))
         else:
-            kids.append(BTN(222, s["h"] - 65, 156, 35, "ПРИЄДНАТИСЯ", s["pay"], "line", C, C, 15, attrs='target="_blank" rel="noopener"'))
+            kids.append(BTN(222, hh - 65, 156, 35, "ПРИЄДНАТИСЯ", s["pay"], "line", C, C, 15, attrs='target="_blank" rel="noopener"'))
         kids.append(I(ix - x0, iy - y0, iw, ih, s["img"], cls="keep mob-hide", extra="object-fit:contain;"))
-        ch.append(G(x0, y0, 836, s["h"], kids, bg=OLIVE, cls="scard"))
-    ch.append(I(545, 1408, 350, 38, "1/69cf9218eecd0ca27089a59b_optimized_1045_flip.webp"))
-    ch.append(T(302, 1480, 836, "Кожен сезон — окрема сторінка з програмою, форматом і відгуками. Натисніть «Детальніше».", "F", 20, 22, OLIVE, "center", cls="p", extra="opacity:.7"))
+        ch.append(G(x0, y0, 836, hh, kids, bg=OLIVE, cls="scard"))
+    ch.append(I(545, 1478, 350, 38, "1/69cf9218eecd0ca27089a59b_optimized_1045_flip.webp"))
+    ch.append(T(302, 1550, 836, "Кожен сезон — окрема сторінка з програмою, форматом і відгуками. Натисніть «Детальніше».", "F", 20, 22, OLIVE, "center", cls="p", extra="opacity:.7"))
     return ch
