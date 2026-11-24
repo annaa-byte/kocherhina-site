@@ -111,15 +111,14 @@ def build():
             f'<a class="a t" href="about.html" style="left:54px;top:385px;font-family:var(--forum);font-size:16.5px;color:#000;text-decoration:none">ДІЗНАТИСЬ БІЛЬШЕ</a>',
         ], bg=CREAM),
     ], bgimg="1/69cf9d22eecd0ca27089d4af_optimized_1920.webp"))
-    # B13 invitation: plain olive, the painting on the right (the food collage background is gone)
-    secs.append(SEC(640, [
-        T(120, 140, 520, "<i>Ваше життя —</i>", "F", 48, 53, C, "left", cls="h2"),
-        T(120, 205, 520, "не заздалегідь прописаний сценарій,<br>а ваш власний творчий проект.", "F", 28, 33.6, C, "left", cls="p"),
-        LINE(120, 300, 80, "rgba(255,250,241,.45)"),
-        T(120, 330, 520, "Запрошую вас у простір<br>жіночої підтримки та натхнення,<br>щоб створити свій авторський шедевр!", "F", 28, 33.6, C, "left", cls="p"),
-        BTN(120, 480, 232, 45, "ВЗЯТИ УЧАСТЬ", "#temy", "fill", C, "#000", 15, attrs='data-svc="buy"'),
-        I(720, 110, 600, 404, "1/69cfa3e0eecd0ca27089f36d_optimized.webp", cls="keep", extra="object-fit:cover"),
-    ], bg=OLIVE))
+    # B13 invitation (original)
+    secs.append(SEC(844, [
+        T(120, 97, 400, "<i>Ваше життя —</i>", "F", 48, 53, C, "left", cls="h2"),
+        T(150, 157, 519, "не заздалегідь прописаний сценарій,<br>а ваш власний творчий проект.", "F", 28, 33.6, C, "right", cls="p"),
+        I(126, 202, 485, 327, "1/69cfa3e0eecd0ca27089f36d_optimized.webp"),
+        T(120, 503, 520, "Запрошую вас у простір<br>жіночої підтримки та натхнення,<br>щоб створити свій авторський шедевр!", "F", 28, 33.6, C, "left", cls="p"),
+        BTN(120, 653, 232, 45, "ВЗЯТИ УЧАСТЬ", "#temy", "fill", C, "#000", 15, attrs='data-svc="buy"'),
+    ], bgimg="1/69cfa37123efa9cc4461697a_optimized_1920.webp"))
     # B14 testimonials
     keys = "bdacef"
     slides = "".join(f'<blockquote class="ed-slide{" on" if i == 0 else ""}">{TESTI[k]}</blockquote>' for i, k in enumerate(keys))
