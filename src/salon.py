@@ -60,18 +60,18 @@ def build():
     secs.append(SEC(550, [
         T(120, 72, 520, "ЧОМУ САМЕ «САЛОН»?", "F", 48, 48, C, "left", cls="h2", tag="h2", extra="margin:0;"),
         T(120, 140, 413, "Бо салонну культуру колись створили саме жінки, як простір свободи від жорстких норм і правил.", "F", 20, 20, C, "left", cls="p"),
-        I(821, -33, 398, 265, "1/69cf80ffeecd0ca2708958d0_optimized.webp"),
-        I(120, 254, 300, 69, "1/69cf83efeecd0ca2708963b1_optimized.webp"),
-        T(120, 262, 300, "ФОРМАТ", "F", 48, 48, C, "center", cls="h2"),
+        I(900, 40, 300, 200, "1/69cf80ffeecd0ca2708958d0_optimized.webp"),
+        T(120, 268, 406, "ФОРМАТ", "F", 15, 18, C, "left", cls="p skick", extra="letter-spacing:.22em;opacity:.7"),
+        LINE(120, 300, 406, "rgba(255,250,241,.35)"),
         T(120, 341, 406, "Лекції в записі, вправи, техніки та живі групові зустрічі для глибокої зміни мислення та взаємної підтримки.", "F", 20, 20, C, "left", cls="p"),
         T(120, 421, 406, "Робота на базі глибинної психології.", "F", 20, 20, C, "left", cls="p"),
-        I(720, 254, 300, 69, "1/69cf83efeecd0ca2708963b1_optimized.webp"),
-        T(720, 263, 300, "СТРУКТУРА", "F", 48, 48, C, "center", cls="h2"),
+        T(720, 268, 600, "СТРУКТУРА", "F", 15, 18, C, "left", cls="p skick", extra="letter-spacing:.22em;opacity:.7"),
+        LINE(720, 300, 600, "rgba(255,250,241,.35)"),
         G(720, 341, 600, 30, [T(2, 0, 90, "1 сезон", "F", 20, 22, C), T(103, 0, 480, "досліджуємо та змінюємо 1 сферу життя.", "F", 20, 22, C)], cls="row"),
-        LINE(720, 369, 600, C),
+        LINE(720, 369, 600, "rgba(255,250,241,.35)"),
         G(720, 395, 600, 50, [T(2, 0, 90, "8 тижнів", "F", 20, 22, C), T(103, 0, 480, "тривалість сезону", "F", 20, 22, C),
                               T(103, 24, 480, "1 лекція і 1 жива група на тиждень", "F", 20, 22, "rgba(255,250,241,.4)")], cls="row"),
-        LINE(720, 442, 600, C),
+        LINE(720, 442, 600, "rgba(255,250,241,.35)"),
     ], bg=OLIVE))
     # B8 seasons (fixed: real pages, current statuses, apply-for-repeat)
     secs.append(LIGHT + SEC(1653, seasons_block(), bg=CREAM, id="temy"))
@@ -111,14 +111,15 @@ def build():
             f'<a class="a t" href="about.html" style="left:54px;top:385px;font-family:var(--forum);font-size:16.5px;color:#000;text-decoration:none">ДІЗНАТИСЬ БІЛЬШЕ</a>',
         ], bg=CREAM),
     ], bgimg="1/69cf9d22eecd0ca27089d4af_optimized_1920.webp"))
-    # B13 invitation
-    secs.append(SEC(844, [
-        T(120, 97, 400, "<i>Ваше життя —</i>", "F", 48, 53, C, "left", cls="h2"),
-        T(150, 157, 519, "не заздалегідь прописаний сценарій,<br>а ваш власний творчий проект.", "F", 28, 33.6, C, "right", cls="p"),
-        I(126, 202, 485, 327, "1/69cfa3e0eecd0ca27089f36d_optimized.webp"),
-        T(120, 503, 520, "Запрошую вас у простір<br>жіночої підтримки та натхнення,<br>щоб створити свій авторський шедевр!", "F", 28, 33.6, C, "left", cls="p"),
-        BTN(120, 653, 232, 45, "ВЗЯТИ УЧАСТЬ", "#temy", "fill", C, "#000", 15, attrs='data-svc="buy"'),
-    ], bgimg="1/69cfa37123efa9cc4461697a_optimized_1920.webp"))
+    # B13 invitation: plain olive, the painting on the right (the food collage background is gone)
+    secs.append(SEC(640, [
+        T(120, 140, 520, "<i>Ваше життя —</i>", "F", 48, 53, C, "left", cls="h2"),
+        T(120, 205, 520, "не заздалегідь прописаний сценарій,<br>а ваш власний творчий проект.", "F", 28, 33.6, C, "left", cls="p"),
+        LINE(120, 300, 80, "rgba(255,250,241,.45)"),
+        T(120, 330, 520, "Запрошую вас у простір<br>жіночої підтримки та натхнення,<br>щоб створити свій авторський шедевр!", "F", 28, 33.6, C, "left", cls="p"),
+        BTN(120, 480, 232, 45, "ВЗЯТИ УЧАСТЬ", "#temy", "fill", C, "#000", 15, attrs='data-svc="buy"'),
+        I(720, 110, 600, 404, "1/69cfa3e0eecd0ca27089f36d_optimized.webp", cls="keep", extra="object-fit:cover"),
+    ], bg=OLIVE))
     # B14 testimonials
     keys = "bdacef"
     slides = "".join(f'<blockquote class="ed-slide{" on" if i == 0 else ""}">{TESTI[k]}</blockquote>' for i, k in enumerate(keys))
